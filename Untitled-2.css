@@ -154,6 +154,13 @@
 	top:3px;
 	float:left;
 }
+
+#avata span {
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 16pt;
+}
+
 #setting{
 	position:relative;
 	top:3px;
