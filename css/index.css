@@ -322,3 +322,11 @@ textarea#chat:focus {
 .rightbar p {
     text-align: center;
 }
+
+.mybtn {
+    background-color: #fbc000;
+}
+
+.mybtn:hover {
+    background-color: #e9b200;
+}

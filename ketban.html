@@ -10,6 +10,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/ketban.css" type="text/css">
 </head>
 
 <body>
@@ -33,26 +34,26 @@
                 <div class="row belowuserbar">
                     <div class="col-3 menubar">
                         <div class="row menu-item">
-                            <a class="" href="index.html"><i class="fas fa-home"></i></a>
+                            <a class="" href="index.html" data-tooltip="true" data-placement="right" title="Trang chủ"><i class="fas fa-home"></i></a>
                         </div>
                         <hr>
                         <div class="row menu-item">
-                            <a href="#" data-toggle="modal" data-target="#modaltaonhom"><i class="fas fa-plus-circle"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#modaltaonhom" data-tooltip="true" data-placement="right" title="Tạo nhóm chat"><i class="fas fa-plus-circle"></i></a>
                         </div>
                         <div class="row menu-active">
-                            <a href="ketban.html"><i class="fas fa-user-plus"></i></a>
+                            <a href="ketban.html" data-tooltip="true" data-placement="right" title="Thêm bạn"><i class="fas fa-user-plus"></i></a>
                         </div>
                         <div class="row menu-item">
-                            <a href="#" data-toggle="modal" data-target="#modalUploadFile" data-whatever="@mdo"><i
+                            <a href="#" data-toggle="modal" data-target="#modalUploadFile" data-whatever="@mdo" data-tooltip="true" data-placement="right" title="Upload File"><i
                                     class="fas fa-file-upload"></i></a>
                         </div>
                         <div class="row menu-item">
-                            <a href="timfile.html"><i class="fas fa-file"></i></a>
+                            <a href="timfile.html" data-tooltip="true" data-placement="right" title="Tra cứu tài liệu"><i class="fas fa-file"></i></a>
                         </div>
                         <div class="row menu-item">
 
                             <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false"><i class="fas fa-cog"></i></a>
+                                aria-expanded="false" data-tooltip="true" data-placement="right" title="Cài đặt"><i class="fas fa-cog"></i></a>
                             <div class="dropdown-menu">
                                 <a href="#" class="dropdown-item">Cài đặt</a>
                                 <div class="dropdown-divider"></div>
@@ -61,8 +62,7 @@
                                 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modalfeedback"
                                     data-whatever="@mdo">Phản hồi/Báo lỗi</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item">Đăng xuất</a>
-                                <a href="#" class="dropdown-item">Thoát</a>
+                                <a href="signin.html" class="dropdown-item">Đăng xuất</a>
                             </div>
 
                         </div>
@@ -153,7 +153,153 @@
             </div>
 
             <div class="col-md-9 rightbar">
-                
+                <div class="row titlebar">
+                    <h5>Thêm bạn bè</h5>
+                </div>
+                <div class="div-themban">
+                    <div class="row div-timtheoten justify-content-center">
+                        <div class="col-10">
+                            <form>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="form-group">
+                                            <label for="myInputName">Tìm theo tên</label>
+                                            <input type="text" class="form-control" id="myInputName" aria-describedby="emailHelp"
+                                                placeholder="Nhập tên bạn bè">
+                                            <small id="emailHelp" class="form-text text-muted">Bạn có thể tìm kiếm bạn
+                                                bè
+                                                bằng địa chỉ email đăng ký của người đó. <a href="#" id="a-timtheoemail"
+                                                    style="text-decoration:none;">Tìm
+                                                    theo email</a></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <button type="submit" class="btn btn-primary btnthemban">Gửi lời mời</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row div-timtheoemail justify-content-center">
+                        <div class="col-10">
+                            <form>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="form-group">
+                                            <label for="myInputEmail">Tìm theo Email</label>
+                                            <input type="email" class="form-control" id="myInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Nhập tên địa chỉ email">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <button type="submit" class="btn btn-primary btnthemban">Gửi lời mời</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row div-titlebandenghi">
+                    <h5>Bạn đề nghị</h5>
+                </div>
+                <div class="row div-bandenghi">
+                    <div class="row">
+                        <div class="col friend-item">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="images/avatar-men.png" alt="avatar">
+                                </div>
+                                <div class="col-9">
+                                    <h5 id="h5-namefriend">Friend's Name</h5>
+                                    <span class="form-text text-muted">Giới tính: Nam</span>
+                                    <div class="row">
+                                        <button class="btn btn-primary">Giới thiệu</button>
+                                        <button class="btn btn-success">Kết bạn</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col friend-item">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="images/avatar-men.png" alt="avatar">
+                                </div>
+                                <div class="col-9">
+                                    <h5 id="h5-namefriend">Friend's Name</h5>
+                                    <span class="form-text text-muted">Giới tính: Nam</span>
+                                    <div class="row">
+                                        <button class="btn btn-primary">Giới thiệu</button>
+                                        <button class="btn btn-success">Kết bạn</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col friend-item">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="images/avatar-men.png" alt="avatar">
+                                </div>
+                                <div class="col-9">
+                                    <h5 id="h5-namefriend">Friend's Name</h5>
+                                    <span class="form-text text-muted">Giới tính: Nam</span>
+                                    <div class="row">
+                                        <button class="btn btn-primary">Giới thiệu</button>
+                                        <button class="btn btn-success">Kết bạn</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col friend-item">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="images/avatar-men.png" alt="avatar">
+                                </div>
+                                <div class="col-9">
+                                    <h5 id="h5-namefriend">Friend's Name</h5>
+                                    <span class="form-text text-muted">Giới tính: Nam</span>
+                                    <div class="row">
+                                        <button class="btn btn-primary">Giới thiệu</button>
+                                        <button class="btn btn-success">Kết bạn</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col friend-item">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="images/avatar-men.png" alt="avatar">
+                                </div>
+                                <div class="col-9">
+                                    <h5 id="h5-namefriend">Friend's Name</h5>
+                                    <span class="form-text text-muted">Giới tính: Nam</span>
+                                    <div class="row">
+                                        <button class="btn btn-primary">Giới thiệu</button>
+                                        <button class="btn btn-success">Kết bạn</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col friend-item">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="images/avatar-men.png" alt="avatar">
+                                </div>
+                                <div class="col-9">
+                                    <h5 id="h5-namefriend">Friend's Name</h5>
+                                    <span class="form-text text-muted">Giới tính: Nam</span>
+                                    <div class="row">
+                                        <button class="btn btn-primary">Giới thiệu</button>
+                                        <button class="btn btn-success">Kết bạn</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -330,37 +476,7 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-
-    <script language="javascript">
-        //Code tăng chiều cao textarea khi enter
-        var textarea = document.querySelector('textarea');
-
-        textarea.addEventListener('keydown', autosize);
-
-        function autosize() {
-            var el = this;
-            setTimeout(function () {
-                el.style.cssText = 'height: 35px; padding:0';
-                // for box-sizing other than "content-box" use:
-                // el.style.cssText = '-moz-box-sizing:content-box';
-                el.style.cssText = 'height:' + el.scrollHeight + 'px';
-            }, 0);
-        }
-    </script>
-    <script type="text/javascript" language="javascript">
-        $(document).ready(function () {
-            $("#inputfile").on("change", function (e) {
-                var files = $(this)[0].files;
-                if (files.length >= 2) {
-                    $("#labelFileUpload").text(files.length + " file đã được chọn");
-                } else {
-                    var filename = e.target.value.split('\\').pop();
-                    $("#labelFileUpload").text(filename);
-                }
-            });
-        });
-
-    </script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

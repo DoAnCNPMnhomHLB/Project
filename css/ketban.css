@@ -1,0 +1,60 @@
+.rightbar {
+    background-color: #E9EBEE;
+}
+
+.titlebar, .div-timtheoten, .div-timtheoemail, .div-titlebandenghi {
+    background-color: white;
+}
+
+.titlebar h5 {
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.div-timtheoten {
+    padding-top: 20px;
+}
+
+.btnthemban {
+    margin-top: 32px;
+}
+
+.div-titlebandenghi h5 {
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.div-bandenghi {
+    width: 100%;
+    margin-left: 5px;
+}
+
+.friend-item {
+    height: 130px;
+    width: 310px;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: 1px solid #cecece;
+    /* box-shadow: 1px 1px 5px 0px #969696; */
+}
+
+.friend-item:hover {
+    box-shadow: 1px 1px 20px 0px #9e9e9e;
+    transition: 0.2s;
+}
+
+.friend-item img {
+    width: 60px;
+    margin-top: 10px;
+}
+
+.friend-item h5 {
+    margin-top: 7px;
+}
+
+.friend-item button {
+    margin-top: 15px;
+    margin-left: 20px;
+}

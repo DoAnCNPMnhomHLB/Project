@@ -33,26 +33,26 @@
                 <div class="row belowuserbar">
                     <div class="col-3 menubar">
                         <div class="row menu-active">
-                            <a href="index.html"><i class="fas fa-home"></i></a>
+                            <a href="index.html" data-tooltip="true" data-placement="right" title="Trang chủ"><i class="fas fa-home"></i></a>
                         </div>
                         <hr>
                         <div class="row menu-item">
-                            <a href="#" data-toggle="modal" data-target="#modaltaonhom"><i class="fas fa-plus-circle"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#modaltaonhom" data-tooltip="true" data-placement="right" title="Tạo nhóm chat"><i class="fas fa-plus-circle"></i></a>
                         </div>
                         <div class="row menu-item">
-                            <a href="ketban.html"><i class="fas fa-user-plus"></i></a>
+                            <a href="ketban.html" data-tooltip="true" data-placement="right" title="Thêm bạn"><i class="fas fa-user-plus"></i></a>
                         </div>
                         <div class="row menu-item">
-                            <a href="#" data-toggle="modal" data-target="#modalUploadFile" data-whatever="@mdo"><i
+                            <a href="#" data-toggle="modal" data-target="#modalUploadFile" data-whatever="@mdo" data-tooltip="true" data-placement="right" title="Upload File"><i
                                     class="fas fa-file-upload"></i></a>
                         </div>
                         <div class="row menu-item">
-                            <a href="timfile.html"><i class="fas fa-file"></i></a>
+                            <a href="timfile.html" data-tooltip="true" data-placement="right" title="Tra cứu tài liệu"><i class="fas fa-file"></i></a>
                         </div>
                         <div class="row menu-item">
 
                             <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false"><i class="fas fa-cog"></i></a>
+                                aria-expanded="false" data-tooltip="true" data-placement="right" title="Cài đặt"><i class="fas fa-cog"></i></a>
                             <div class="dropdown-menu">
                                 <a href="#" class="dropdown-item">Cài đặt</a>
                                 <div class="dropdown-divider"></div>
@@ -61,8 +61,7 @@
                                 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modalfeedback"
                                     data-whatever="@mdo">Phản hồi/Báo lỗi</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item">Đăng xuất</a>
-                                <a href="#" class="dropdown-item">Thoát</a>
+                                <a href="signin.html" class="dropdown-item">Đăng xuất</a>
                             </div>
 
                         </div>
@@ -157,7 +156,8 @@
                     <div class="col-8">
                         <img id="logohome" src="images/Logo.png" alt="logo">
                         <p>Chào mừng đến với <b>Talknow</b></p>
-                        <p>Khám phá thế giới rộng lớn đầy tiện ích của Talknow cùng trò chuyện và làm việc với người thân, đồng nghiệp và cộng đồng toàn thế giới.</p>
+                        <p>Khám phá thế giới rộng lớn đầy tiện ích của Talknow cùng trò chuyện và làm việc với người
+                            thân, đồng nghiệp và cộng đồng toàn thế giới.</p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -366,37 +366,7 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-
-    <script language="javascript">
-        //Code tăng chiều cao textarea khi enter
-        var textarea = document.querySelector('textarea');
-
-        textarea.addEventListener('keydown', autosize);
-
-        function autosize() {
-            var el = this;
-            setTimeout(function () {
-                el.style.cssText = 'height: 35px; padding:0';
-                // for box-sizing other than "content-box" use:
-                // el.style.cssText = '-moz-box-sizing:content-box';
-                el.style.cssText = 'height:' + el.scrollHeight + 'px';
-            }, 0);
-        }
-    </script>
-    <script type="text/javascript" language="javascript">
-        $(document).ready(function () {
-            $("#inputfile").on("change", function (e) {
-                var files = $(this)[0].files;
-                if (files.length >= 2) {
-                    $("#labelFileUpload").text(files.length + " file đã được chọn");
-                } else {
-                    var filename = e.target.value.split('\\').pop();
-                    $("#labelFileUpload").text(filename);
-                }
-            });
-        });
-
-    </script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

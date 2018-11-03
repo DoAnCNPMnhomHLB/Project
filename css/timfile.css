@@ -1,0 +1,17 @@
+.div-nhaptentailieu select {
+    max-width: 400px;
+}
+
+.titlebar h5 {
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.div-titleketqua h5 {
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.div-titleketqua {
+    border-bottom: 1px solid #E5E5E9;
+}

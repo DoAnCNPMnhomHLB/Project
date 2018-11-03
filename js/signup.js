@@ -24,4 +24,3 @@ function Previous() {
     Chuyen2.style.marginLeft = 0 + 'px';
     x = 0;
 }
-
