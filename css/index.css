@@ -89,6 +89,16 @@
     margin: 5px auto;
 }
 
+.dropdown-menu .dropdown-item {
+    font-size: 11pt;
+    color: black;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: black;
+    background-color: #FBC000;
+}
+
 .menu-item a:hover {
     color: white;
 }
@@ -223,16 +233,92 @@ textarea#chat:focus {
 
 .container-2 .fa-image {
     position: absolute;
-    bottom: 30px;
+    bottom: 33px;
     right: 150px;
-    font-size: 20pt;
+    font-size: 17pt;
     color: #63717f;
 }
 
 .container-2 .fa-grin-alt {
     position: absolute;
-    bottom: 30px;
+    bottom: 33px;
     right: 110px;
-    font-size: 18pt;
+    font-size: 16pt;
     color: #63717f;
+}
+
+.modal-header {
+    background-color: #fbc000;
+    color: white;
+}
+
+.modal-footer {
+    background-color: #e4e4e4;
+}
+
+.modal-header img {
+    width: 200px;
+}
+
+#modalfeedback .modal-body #message-text {
+    height: 180px;
+}
+
+.modal-footer #btnok {
+    background-color: #fbc000;
+    border: 1px solid #fbc000;
+}
+
+.modal-footer #btnok:hover {
+    background-color: #e9b200;
+}
+
+.inputfile {
+    display: none;
+}
+
+.inputfile + label {
+    font-size: 12pt;
+    font-weight: 500;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #fbc000;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.inputfile + label:hover {
+    background-color: #bd9100;
+}
+
+.carousel-indicators li {
+    background-color: #d3d3d3;
+}
+
+.carousel-indicators .active {
+    background-color: #fbc000;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 30px;
+  color: #888888;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 30px;
+  color: #888888;
+}
+
+#logohome {
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+}
+
+.rightbar p {
+    text-align: center;
 }
