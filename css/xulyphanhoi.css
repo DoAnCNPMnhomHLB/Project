@@ -1,0 +1,42 @@
+body {
+    background-color: #E9EBEE;
+}
+
+/* XỬ LÝ PHẢN HỒI*/
+
+#table-phanhoi {
+    margin: 30px;
+    background-color: white;
+    border: 1px solid #cecece;
+}
+
+/* QUẢN LÝ NGƯỜI DÙNG */
+
+.card-time, .card-user {
+    margin-top: 20px;
+}
+
+.card-time .card-header, .card-user .card-header {
+    background-color: #fbc000;
+}
+
+.card-user span {
+    margin-left: 10px;
+    font-size: 15pt;
+    font-weight: 500;
+}
+
+.doituong {
+    color: #228AE7;
+}
+
+.fa-chart-line {
+    font-size: 25pt;
+    margin-left: 10px;
+    color: #228AE7;
+    margin-right: 20px;
+}
+
+
+
+/* QUẢN LÝ THƯ VIỆN */

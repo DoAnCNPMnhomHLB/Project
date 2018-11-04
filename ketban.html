@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Talknow</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="fontawesome-free-5.5.0-web/css/all.css" type="text/css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <link rel="stylesheet" href="css/ketban.css" type="text/css">
@@ -19,10 +18,11 @@
             <div class="col-md-3 leftbar">
                 <div class="row userbar">
                     <div class="col-3 avatar">
-                        <img src="images/thaygiao.jpg" alt="Ảnh đại diện">
+                        <a href="#" data-toggle="modal" data-target="#modal-updateinfo"><img src="images/thaygiao.jpg"
+                                alt="Ảnh đại diện"></a>
                     </div>
                     <div class="col-9">
-                        <h6>John Math</h6>
+                        <h6><a href="#" class="username" data-toggle="modal" data-target="#modal-updateinfo">John Math</a></h6>
                         <div class="box">
                             <div class="container-1">
                                 <a href="#" class="icon"><i class="fa fa-search"></i></a>
@@ -34,28 +34,34 @@
                 <div class="row belowuserbar">
                     <div class="col-3 menubar">
                         <div class="row menu-item">
-                            <a class="" href="index.html" data-tooltip="true" data-placement="right" title="Trang chủ"><i class="fas fa-home"></i></a>
+                            <a class="" href="index.html" data-tooltip="true" data-placement="right" title="Trang chủ"><i
+                                    class="fas fa-home"></i></a>
                         </div>
                         <hr>
                         <div class="row menu-item">
-                            <a href="#" data-toggle="modal" data-target="#modaltaonhom" data-tooltip="true" data-placement="right" title="Tạo nhóm chat"><i class="fas fa-plus-circle"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#modaltaonhom" data-tooltip="true"
+                                data-placement="right" title="Tạo nhóm chat"><i class="fas fa-plus-circle"></i></a>
                         </div>
                         <div class="row menu-active">
                             <a href="ketban.html" data-tooltip="true" data-placement="right" title="Thêm bạn"><i class="fas fa-user-plus"></i></a>
                         </div>
                         <div class="row menu-item">
-                            <a href="#" data-toggle="modal" data-target="#modalUploadFile" data-whatever="@mdo" data-tooltip="true" data-placement="right" title="Upload File"><i
-                                    class="fas fa-file-upload"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#modalUploadFile" data-whatever="@mdo"
+                                data-tooltip="true" data-placement="right" title="Upload File"><i class="fas fa-file-upload"></i></a>
                         </div>
                         <div class="row menu-item">
-                            <a href="timfile.html" data-tooltip="true" data-placement="right" title="Tra cứu tài liệu"><i class="fas fa-file"></i></a>
+                            <a href="timfile.html" data-tooltip="true" data-placement="right" title="Tra cứu tài liệu"><i
+                                    class="fas fa-file"></i></a>
                         </div>
                         <div class="row menu-item">
 
                             <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" data-tooltip="true" data-placement="right" title="Cài đặt"><i class="fas fa-cog"></i></a>
+                                aria-expanded="false" data-tooltip="true" data-placement="right" title="Cài đặt"><i
+                                    class="fas fa-cog"></i></a>
                             <div class="dropdown-menu">
                                 <a href="#" class="dropdown-item">Cài đặt</a>
+                                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-doimatkhau">Đổi
+                                    mật khẩu</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modalgioithieu">Giới
                                     thiệu</a>
@@ -305,6 +311,128 @@
     </div>
 
     <!--modal ở dưới đây-->
+    <!--modal đổi mật khẩu-->
+    <div class="modal fade" id="modal-doimatkhau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="current-password">Mật khẩu hiện tại: </label>
+                            </div>
+                            <div class="col-7">
+                                <input type="password" name="current-password" id="current-password" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="new-password">Mật khẩu mới: </label>
+                            </div>
+                            <div class="col-7">
+                                <input type="password" name="new-password" id="new-password" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="comfirm-password">Nhập lại mật khẩu mới: </label>
+                            </div>
+                            <div class="col-7">
+                                <input type="password" name="comfirm-password" id="comfirm-password" value="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary mybtn">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--modal cập nhật thông tin-->
+    <div class="modal fade" id="modal-updateinfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật thông tin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="images/thaygiao.jpg" alt="avatar">
+                            </div>
+                            <div class="col-8">
+                                <input type="file" name="inputanh" id="inputanh" class="inputfile">
+                                <label for="inputanh" id="lb-loadanh">Sửa ảnh đại diện</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="username">Tên hiển thị: </label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" name="username" id="username" value="John Math">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="sex">Giới tính: </label>
+                            </div>
+                            <div class="col-8">
+                                <select id="sex">
+                                    <option>Nam</option>
+                                    <option>Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="ngaysinh">Ngày sinh: </label>
+                            </div>
+                            <div class="col-8">
+                                <input type="date" name="ngaysinh" id="ngaysinh" value="1997-01-18">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="email">Email: </label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" name="email" id="email" value="diphotphopentaoxit@gmail.com">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="sdt">Số điện thoại: </label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" name="username" id="sdt" value="0987647814">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary mybtn">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--modal tạo nhóm-->
     <div class="modal fade" id="modaltaonhom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
