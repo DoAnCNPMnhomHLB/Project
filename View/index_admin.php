@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="fontawesome-free-5.5.0-web/css/all.css" type="text/css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/index-ad.css" type="text/css">
 </head>
 
 <body>
@@ -17,11 +18,10 @@
             <div class="col-md-3 leftbar">
                 <div class="row userbar">
                     <div class="col-3 avatar">
-                        <a href="#" data-toggle="modal" data-target="#modal-updateinfo"><img src="images/thaygiao.jpg"
-                                alt="Ảnh đại diện"></a>
+                        <a href="#" data-toggle="modal" data-target="#modal-updateinfo"><img src="images/login_icon.png" alt="Ảnh đại diện"></a>
                     </div>
                     <div class="col-9">
-                        <h6><a href="#" class="username" data-toggle="modal" data-target="#modal-updateinfo">John Math</a></h6>
+                        <h6><a href="#" class="username" data-toggle="modal" data-target="#modal-updateinfo"><?php session_start(); echo $_SESSION['username']; ?></a></h6>
                         <div class="box">
                             <div class="container-1">
                                 <a href="#" class="icon"><i class="fa fa-search"></i></a>
@@ -48,7 +48,7 @@
                                 data-tooltip="true" data-placement="right" title="Upload File"><i class="fas fa-file-upload"></i></a>
                         </div>
                         <div class="row menu-item">
-                            <a href="timfile.html" data-tooltip="true" data-placement="right" title="Tra cứu tài liệu"><i
+                            <a href="timfile.php" data-tooltip="true" data-placement="right" title="Tra cứu tài liệu"><i
                                     class="fas fa-file"></i></a>
                         </div>
                         <div class="row menu-item">
@@ -59,7 +59,7 @@
                             <div class="dropdown-menu">
                                 <a href="#" class="dropdown-item">Cài đặt</a>
                                 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-doimatkhau">Đổi
-                                    mật khẩu</a>
+                                        mật khẩu</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modalgioithieu">Giới
                                     thiệu</a>
@@ -108,93 +108,23 @@
                                 <span class="statustime">24 phút</span>
                             </div>
                         </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-9 rightbar">
-                <div class="row justify-content-center div-welcome">
-                    <div class="col-8">
-                            <a href="index-ad.html">admin</a>
-                        <img id="logohome" src="images/Logo.png" alt="logo">
-                        <p>Chào mừng đến với <b>Talknow</b></p>
-                        <p>Khám phá thế giới rộng lớn đầy tiện ích của Talknow cùng trò chuyện và làm việc với người
-                            thân, đồng nghiệp và cộng đồng toàn thế giới.</p>
-                    </div>
+                <div class="row titlebar">
+                    <a href="admin/xylyphanhoi.html" target="main-iframe" class="btn btn-outline-warning">Xử lý phản
+                        hồi</a>
+                    <a href="admin/qlnguoidung.html" target="main-iframe" class="btn btn-outline-warning">Quản lý người
+                        dùng</a>
+                    <a href="admin/qlthuvien.html" target="main-iframe" class="btn btn-outline-warning">Quản lý thư
+                        viện</a>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-8">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="images/content1.png" alt="First slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="images/content2.png" alt="Second slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="images/content4.png" alt="Third slide">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
+                <div class="row">
+                    <iframe src="" frameborder="0" class="main-iframe" name="main-iframe" scrolling="no">
+                        <p>Trình duyệt của bạn không hỗ trợ iframe.</p>
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -263,7 +193,7 @@
                     <form>
                         <div class="row">
                             <div class="col-4">
-                                <img src="images/thaygiao.jpg" alt="avatar">
+                                <img src="images/login_icon.png" alt="avatar">
                             </div>
                             <div class="col-8">
                                 <input type="file" name="inputanh" id="inputanh" class="inputfile">
@@ -275,7 +205,7 @@
                                 <label for="username">Tên hiển thị: </label>
                             </div>
                             <div class="col-8">
-                                <input type="text" name="username" id="username" value="John Math">
+                                <input type="text" name="username" id="username" value="Admin 01">
                             </div>
                         </div>
                         <div class="row">
@@ -294,7 +224,7 @@
                                 <label for="ngaysinh">Ngày sinh: </label>
                             </div>
                             <div class="col-8">
-                                <input type="date" name="ngaysinh" id="ngaysinh" value="1997-01-18">
+                                <input type="date" name="ngaysinh" id="ngaysinh" value="1997-12-31">
                             </div>
                         </div>
                         <div class="row">
@@ -302,7 +232,7 @@
                                 <label for="email">Email: </label>
                             </div>
                             <div class="col-8">
-                                <input type="text" name="email" id="email" value="diphotphopentaoxit@gmail.com">
+                                <input type="text" name="email" id="email" value="admin01@gmail.com">
                             </div>
                         </div>
                         <div class="row">
