@@ -1,14 +1,4 @@
-<?php
-    include('../Controller/controller_talknow_library.php');
-    $xuly = new xuly();
-    if(isset($_POST['btn_ok']))
-    {
-        $kind = $_POST['post_document'];
-        $name = $_POST['nameDoc'];
-        $file_part = $_FILES['file'];
-        $getDoc = $xuly->xulyTailieu(null, $kind, $name, $file_part_sql, null);	
-    }
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -406,6 +396,38 @@
                                 <option value = "others">Tài liệu khác</option>
                             </select>
                         </div>
+                        <div>
+                        <?php // Xử Lý Upload
+                            //Connect database
+                            $sv_host = 'localhost';
+                            $sv_user = 'root';
+                            $sv_password = '';
+                            $sv_database = 'talknow';
+                            $conn = mysqli_connect($sv_host,$sv_user,$sv_password,$sv_database) or die ('Khong ket noi duoc database');
+                            mysqli_query($conn,"SET NAMES 'UTF8'");
+                            $file_part = 'Undenfi';
+                            
+                            if (isset($_POST['btn_ok'])) {
+                                $post_document = $_POST['post_document'];
+                                $nameDoc = $_POST['nameDoc'];
+                                $file_part = $_FILES['file']['name'];
+                                
+                                if ($post_document == "" || $nameDoc == "") {
+                                    echo '<script language="javascript">alert("Bạn vui lòng nhập đầy đủ thông tin!")</script>';
+                                } else {
+
+                                            move_uploaded_file($_FILES['file']['tmp_name'],'images/'.$file_part); 
+                                            //di chuyển file vào folder images/
+                                            //thực hiện việc lưu trữ dữ liệu vào db
+                                            $file_part_sql = 'images/'.$file_part;
+                                            $sql = "INSERT INTO library(documentId,kind_of_document,documentName,file, author) VALUES (null,'$post_document','$nameDoc','$file_part_sql','01')";
+                                                // thực thi câu $sql với biến conn lấy từ file connection.php
+                                                mysqli_query($conn,$sql);
+                                                
+                                }
+                            }
+                        ?>
+                        </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Đặt tên cho tài liệu:</label>
                             <input type="text" class="form-control" id="message-text" name = "nameDoc">
@@ -415,7 +437,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-primary" id="btnok" name = "btn_ok">OK</button>
+                        <input type="submit" id="btn_ok" name="btn_ok"/>
                     </div>
                 </form>
             </div>
