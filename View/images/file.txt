@@ -1,0 +1,14 @@
+/*<?php
+    include('../Controller/controller_talknow_library.php');
+    $xuly = new xuly();
+    if(isset($_POST['btn_ok']))
+    {
+        $kind = $_POST['post_document'];
+        $name = $_POST['nameDoc'];
+        $file_part = $_FILES['file']['name'];
+        move_uploaded_file($_FILES['file']['tmp_name'],'images/'.$file_part); 
+        //luu file vào database 
+        $file_part_sql = 'file/'.$file_part;
+        $getDoc = $xuly->xulyTailieu(null, $kind, $name, $file_part_sql, null);	
+    }
+?>*/

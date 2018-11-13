@@ -23,5 +23,32 @@ class truyvan extends database{
 		$this->setQuery($sql);
 		return $this->execute(array($id, $username, $password, $role, $email));
 	}
+	//function gửi phản hồi
+	function getFeedback($feedback_id, $nameFeedback, $feedback, $sender){
+		$sql = "INSERT INTO `feedback` (`feedback_id`, `nameFeedback`, `feedback`, `sender`) 
+		VALUES(?, ?, ?, ?)";
+		$this->setQuery($sql);
+		return $this->execute(array($feedback_id, $nameFeedback, $feedback, $sender));
+	}
+	//function cập nhật thông tin
+	function update_info($username, $email, $sex, $birthday, $phone, $image, $ses)
+	{	
+		$data = [
+			'username' => $username,
+			'email' => $email,
+			'birthday' => $birthday,
+			'sex' => $sex,
+			'phone' => $phone,
+			'image' => $image,
+			'session' => $ses,
+		];
+		$sql = "UPDATE user SET username=:username, email=:email, birthday=:birthday, sex=:sex, phone=:phone, image=:image WHERE user.username=:session";
+		$stmt= $this->_dbh->prepare($sql);
+		$stmt->execute($data);
+		return 1;
+	}
+
+	
+
 }
  ?>

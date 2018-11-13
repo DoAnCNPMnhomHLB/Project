@@ -1,4 +1,7 @@
 <?php
+    session_start();
+?>
+<?php
 include('../Controller/controller_talknow_user.php');
 $xuly = new xuly();
 if(isset($_POST['btn_login']))
@@ -8,7 +11,6 @@ if(isset($_POST['btn_login']))
 	$user = $xuly->dangnhapTK($username,md5($password));
     //print_r($user);
 }
-session_start();
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

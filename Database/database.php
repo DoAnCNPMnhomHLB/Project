@@ -80,5 +80,6 @@ class database
 		  }
 		  return $result->fetch(PDO::FETCH_OBJ);
 	  }
+
 }
  ?>
