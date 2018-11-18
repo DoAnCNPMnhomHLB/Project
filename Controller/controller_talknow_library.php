@@ -1,32 +1,36 @@
 <?php
 include('../Model/model_talknow_library.php');
 //function nhận dữ liệu từ upload tài liệu
-class xuly{
-	function xulyTailieu($documentId, $kind, $name, $file_part_sql, $author){
-		$truyvan = new truyvan();
-		$doc = $truyvan->getDocument($documentId, $$documentId, $kind, $name, $file_part_sql, $author, $name, $file_part_sql, $author);
-		if($doc->kind == "" || $doc->name = "" || $doc->file_part_sql = "")
-		{
-			echo '<script language="javascript">alert("Bạn vui lòng nhập đầy đủ thông tin!")</script>';
+class c_library{
+	var $thongbao = "";
+	var $error = "";
+	//function control lấy dữ liệu để đổ ra trang quản lý tài liệu
+	function xulyTailieu(){
+		$m_library = new m_library();
+		$materials = $m_library->set_document();
+		return array('materials'=> $materials);
+	}
+	//function control tra cứu tài liệu
+	function tracuu($key){
+		$m_library = new m_library();
+		$tailieu = $m_library->search($key);
+		return $tailieu;
+	}
+	//function control delete
+	function deleteDoc($documentId){
+		$m_library = new m_library();
+		$tailieu = $m_library->m_deleteDoc($documentId);
+	}
+	//function update tên tài liệu
+	function c_updateTailieu($documentName, $matailieu){
+		if($documentName == ""){
+			$this->thongbao = "Bạn phải nhập tên tài liệu!";
+			$this->error = $this->thongbao;
 		}
-		else {
-			$ktTailieu = $truyvan->kiemtraTailieu($documentName);
-			if($ktTailieu == true)
-			{
-				echo '<script language="javascript">alert("Tên tài liệu đã bị trùng. Hãy đặt tên lại cho tài liệu!")</script>';
-			}
-			else
-			{
-				if($doc->rowCount()>0)
-				{
-					echo '<script language="javascript">alert("Tài liệu đã được thêm vào thư viện.")</script>';
-				}
-				else
-				{
-					print "<a href='javascript:history.go(-1)'><center><B>Không thành công, vui lòng kiểm tra lại.</center></B></a>";
-				}
-			}
+		else{
+			$m_library = new m_library();
+			$doc = $m_library->update_Tailieu($documentName, $matailieu);
 		}
-    }
+	}
 }
 ?>

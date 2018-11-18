@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!isset($_SESSION['username'])){
+        header('location:./signin.php');
+    }
 ?>
 <?php
     include('../Controller/controller_talknow_user.php');
@@ -28,8 +31,6 @@
         $_SESSION['username'] = $username;                
     }
 
- 
-    
-
+    //tra cứu thông tin
 
     ?>

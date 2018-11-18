@@ -37,6 +37,16 @@ body {
     margin-right: 20px;
 }
 
+.btn_show {
+    width: 85px;
+}
 
+#modal-showfeedback .modal-header{
+    background-color: #fbc000;
+
+}
+.modal-body .row{
+    margin-bottom: 5px;
+}
 
 /* QUẢN LÝ THƯ VIỆN */

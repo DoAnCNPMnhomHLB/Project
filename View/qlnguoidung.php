@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../fontawesome-free-5.5.0-web/css/all.css" type="text/css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../css/xulyphanhoi.css" type="text/css">
+    <link rel="stylesheet" href="fontawesome-free-5.5.0-web/css/all.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/xulyphanhoi.css" type="text/css">
 </head>
 
 <body>

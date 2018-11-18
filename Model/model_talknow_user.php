@@ -47,7 +47,13 @@ class truyvan extends database{
 		$stmt->execute($data);
 		return 1;
 	}
+	//function truy xuất tên người dùng làm danh sách bạn bè
+	function setFriend(){
+		$sql = "SELECT * FROM user";
+		$this->setQuery($sql);
+		return $this->loadAllRows();
 
+	}
 	
 
 }

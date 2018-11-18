@@ -1,4 +1,10 @@
 <?php  include("set_info_pdo.php");  ?>
+<?php 
+        // include('../Controller/controller_talknow_user.php');
+        $xuly = new xuly();
+        $c_setFriend = $xuly->c_setFriend();
+        $friends = $c_setFriend['friends'];
+?>
 <div class="col-md-3 leftbar">
                 <div class="row userbar">
                     <div class="col-3 avatar">
@@ -18,7 +24,7 @@
                 <div class="row belowuserbar">
                     <div class="col-3 menubar">
                         <div class="row menu-active">
-                            <a href="index_user.php" data-tooltip="true" data-placement="right" title="Trang chủ"><i class="fas fa-home"></i></a>
+                            <a href="<?php if($hung_role==0) { echo "index_admin.php";} else { echo "index_user.php";}?>" data-tooltip="true" data-placement="right" title="Trang chủ"><i class="fas fa-home"></i></a>
                         </div>
                         <hr>
                         <div class="row menu-item">
@@ -60,83 +66,24 @@
                         <div class="row filtermess">
                             <a href="#">Tin nhắn <i class="fas fa-caret-down"></i></a>
                         </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
-                        <div class="row yourfriend">
-                            <div class="col-3">
-                                <img src="images/avatar-female.png" alt="This is avatar a fr">
-                            </div>
-                            <div class="col-9">
-                                <p class="friendname">Friend's Name</p>
-                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                <a href="#"><i class="fas fa-cog"></i></a>
-                                <span class="statustime">24 phút</span>
-                            </div>
-                        </div>
+                        <?php
+                            foreach($friends as $fr){
+                                ?>
+                                <div class="row yourfriend">
+                                    <div class="col-3">
+                                        <img src="<?=$fr->image?>" alt="This is avatar a fr">
+                                    </div>
+                                    <div class="col-9">
+                                        <p class="friendname"><?=$fr->username?></p>
+                                        <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
+                                        <a href="#"><i class="fas fa-cog"></i></a>
+                                        <span class="statustime">24 phút</span>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        ?>
+
                     </div>
                 </div>
 </div>

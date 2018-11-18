@@ -34,7 +34,7 @@ class xuly{
 		$ktDangky = $truyvan->kiemtraDangky($username);
 		if($ktDangky==true)
 		{
-			echo '<script language="javascript">alert("Tài khoản đã tồn tại! Hãy đăng nhập.")</script>';
+			echo '<script language="javascript">alert("Tài khoản đã tồn tại! Hãy đăng nhập..")</script>';
 		}
 		else
 		{
@@ -52,6 +52,7 @@ class xuly{
 	}
 	//function đăng xuất
 	function logout(){
+		session_start();
 		session_destroy();
 		header("location:signin.php");
 	}
@@ -72,6 +73,13 @@ class xuly{
 	function updateInfo($username, $email, $sex, $ngaysinh, $sdt, $file_part_sql, $ses){
 		$truyvan_update = new truyvan();
 		$info = $truyvan_update->update_info($username, $email, $sex, $ngaysinh, $sdt, $file_part_sql, $ses);
+	}
+
+	//function điều hướng lấy user làm danh sách bạn bè
+	function c_setFriend(){
+		$truyvan = new truyvan();
+		$friends = $truyvan->setFriend();
+		return array('friends'=>$friends);
 	}
 }
 

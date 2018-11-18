@@ -12,7 +12,23 @@
     <link rel="stylesheet" href="fontawesome-free-5.5.0-web/css/all.css" type="text/css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
-    <link rel="stylesheet" href="css/index-ad.css" type="text/css">
+    
+    <style>
+        .titlebar a {
+            height: 50px;
+            padding: 10px 70px;
+            margin-top: 10px;
+            margin-left: 30px;
+            color: black;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        .main-iframe {
+            width: 100%;
+            height: calc(100vh - 70px);
+        }
+    </style>
 </head>
 
 <body>
@@ -21,11 +37,11 @@
         <?php include('left_bar.php');?>
             <div class="col-md-9 rightbar">
                 <div class="row titlebar">
-                    <a href="admin/xylyphanhoi.php" target="main-iframe" class="btn btn-outline-warning">Xử lý phản
+                    <a href="xylyphanhoi.php" target="main-iframe" class="btn btn-outline-warning">Xử lý phản
                         hồi</a>
-                    <a href="admin/qlnguoidung.php" target="main-iframe" class="btn btn-outline-warning">Quản lý người
+                    <a href="qlnguoidung.php" target="main-iframe" class="btn btn-outline-warning">Quản lý người
                         dùng</a>
-                    <a href="admin/qlthuvien.php" target="main-iframe" class="btn btn-outline-warning">Quản lý thư
+                    <a href="qlthuvien.php" target="main-iframe" class="btn btn-outline-warning">Quản lý thư
                         viện</a>
                 </div>
                 <div class="row">

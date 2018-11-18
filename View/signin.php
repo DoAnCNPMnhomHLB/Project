@@ -9,7 +9,6 @@ if(isset($_POST['btn_login']))
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$user = $xuly->dangnhapTK($username,md5($password));
-    //print_r($user);
 }
 
 ?>
@@ -78,7 +77,7 @@ if(isset($_POST['btn_login']))
                                 <br>
                                 <input type="password" placeholder="Password*" id="pass" name="password_signin">
                                 <br>
-                                <p class="p-pass">Tối thiểu 8 ký tự</p>
+                                <p class="p-pass">Tối thiểu 6 ký tự</p>
                                 <!-- <input type="password" placeholder="Comfirm Password*" id="c-pass"> -->
                         </div>
                         <div class="div-xacnhan">
