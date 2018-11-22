@@ -54,6 +54,12 @@ class truyvan extends database{
 		return $this->loadAllRows();
 
 	}
+
+	function selectOneUser($id) {
+		$sql = "SELECT * FROM user WHERE id = '$id'; ";
+		$this->setQuery($sql);
+		return $this->loadRow();
+	}
 	
 
 }

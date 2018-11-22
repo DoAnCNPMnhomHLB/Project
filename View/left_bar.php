@@ -69,17 +69,18 @@
                         <?php
                             foreach($friends as $fr){
                                 ?>
-                                <div class="row yourfriend">
-                                    <div class="col-3">
-                                        <img src="<?=$fr->image?>" alt="This is avatar a fr">
+                                    <div class="row yourfriend">
+                                        <div class="col-3">
+                                            <img src="<?=$fr->image?>" alt="This is avatar a fr">
+                                            <a href="roomchat.php?id=<?=$fr->id?>"></a>
+                                        </div>
+                                        <div class="col-9">
+                                            <p class="friendname"><?=$fr->username?></p>
+                                            <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
+                                            <a href="#"><i class="fas fa-cog"></i></a>
+                                            <span class="statustime">24 phút</span>
+                                        </div>
                                     </div>
-                                    <div class="col-9">
-                                        <p class="friendname"><?=$fr->username?></p>
-                                        <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                        <a href="#"><i class="fas fa-cog"></i></a>
-                                        <span class="statustime">24 phút</span>
-                                    </div>
-                                </div>
                                 <?php
                             }
                         ?>

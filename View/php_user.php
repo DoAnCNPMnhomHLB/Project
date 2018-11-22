@@ -31,6 +31,4 @@
         $_SESSION['username'] = $username;                
     }
 
-    //tra cứu thông tin
-
     ?>
