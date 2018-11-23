@@ -8,7 +8,7 @@ if(isset($_POST['btn_login']))
 {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$user = $xuly->dangnhapTK($username,md5($password));
+    $user = $xuly->dangnhapTK($username,$password);
 }
 
 ?>
@@ -106,6 +106,6 @@ if(isset($_POST['btn_signin']))
 	$username_signin 			   = $_POST['username_signin'];
 	$password_signin		   	   = $_POST['password_signin'];
 	$email 				 		   = $_POST['email'];
-	$signin = $c_talknow->signin(null, $username_signin, md5($password_signin), 1, $email );		
+	$signin = $c_talknow->signin(null, $username_signin, $password_signin, 1, $email );		
 }
 ?> 
