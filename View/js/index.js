@@ -28,6 +28,14 @@ $(document).ready(function () {
     $("#a-timtheoemail").click(function () {
         $(".div-timtheoemail").toggle(500);
     });
+
+    //divlink
+
+    $(".yourfriend").click(function() {
+        window.location = $(this).find("a").attr("href"); 
+        return false;
+    });
+
 });
 
 $(function () {

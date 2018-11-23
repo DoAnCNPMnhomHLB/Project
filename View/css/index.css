@@ -131,6 +131,7 @@
     border-left: 4px solid white;
     border-right: 4px solid white;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .yourfriend img {
@@ -218,7 +219,7 @@ textarea#chat {
     resize: none;
     overflow: hidden;
     outline: none;
-    background: #d3d3d3;
+    background: #EDEDED;
     border: none;
     font-size: 11pt;
     float: left;
@@ -363,4 +364,8 @@ textarea#chat:focus {
     color: black;
     border: 1px solid #ccc;
     font-weight: 400;
+}
+
+#avatarOfFriend {
+    border-radius: 50%;
 }

@@ -101,6 +101,13 @@ class xuly{
 		$friends = $truyvan->setFriend();
 		return array('friends'=>$friends);
 	}
+
+	//function chọn 1 user
+	function infoUser($id) {
+		$truyvan = new truyvan();
+		$user = $truyvan->selectOneUser($id);
+		return array('user'=>$user);
+	}
 }
 
 ?>
