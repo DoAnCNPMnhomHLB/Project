@@ -1,0 +1,25 @@
+{
+  "name": "talknow_ft_socket.io",
+  "version": "1.0.0",
+  "description": "Demo talknow using socket.io to chat real time v1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoAnCNPMnhomHLB/Talknow.git"
+  },
+  "author": "Ori Akita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DoAnCNPMnhomHLB/Talknow/issues"
+  },
+  "homepage": "https://github.com/DoAnCNPMnhomHLB/Talknow#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "file-system": "^2.2.2",
+    "socket.io": "^2.1.1",
+    "winston": "^2.3.1"
+  }
+}
