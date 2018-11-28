@@ -119,6 +119,40 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                     <input type="submit" class="btn btn-primary mybtn" value="Cập nhật" name="btn_update"/>
+
+                <?php
+                    function getExtension($str) {
+                    $i = strrpos($str,".");
+                    if (!$i) { return ""; }
+                    $l = strlen($str) - $i;
+                    $ext = substr($str,$i+1,$l);
+                    return $ext;
+                    }
+                
+                    $errors=0;
+                    //checks if the form has been submitted
+                    if(isset($_POST['btn_update']))
+                    {
+                        $image=$_FILES['inputanh']['name'];
+                        // Nếu nó không rỗng
+                        if ($image)
+                        {
+                            $filename = stripslashes($_FILES['inputanh']['name']);
+                            //Lấy phần mở rộng của file
+                            $extension = getExtension($filename);
+                            $extension = strtolower($extension);
+                            // Nếu nó không phải là file hình thì sẽ thông báo lỗi
+                            if (($extension != "jpg") && ($extension != "jpeg") && ($extension !=
+                            "png") && ($extension != "gif"))
+                            {
+                            // xuất lỗi ra màn hình
+                            echo '<script language = "javascript">alert("Đây không phải là file hình")</script>';
+                            $errors=1;
+                        }
+                    }
+                }
+                ?>
+
                 </div>
                 </form>
             </div>
