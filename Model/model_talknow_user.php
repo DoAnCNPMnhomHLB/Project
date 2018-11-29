@@ -60,8 +60,8 @@ class truyvan extends database{
 		return $this->loadAllRows();
 	}
 
-	function selectOneUser($id) {
-		$sql = "SELECT * FROM user WHERE id = '$id'; ";
+	function selectOneUser($username) {
+		$sql = "SELECT * FROM user WHERE username = '$username'; ";
 		$this->setQuery($sql);
 		return $this->loadRow();
 	}
@@ -81,13 +81,18 @@ class truyvan extends database{
 		$this->_cursor->execute();
 	}
 
-	function insertMessage($msg, $sender, $room) {
-        $sql = "INSERT INTO message(content, room_id, sender) SELECT '$msg' , cr.room";
+	function insertMessage($msg, $roomid, $sender) {
+        $sql = "INSERT INTO message(content, room_id, sender) SELECT '$msg' , $roomid, ur.id FROM `user` AS ur WHERE ur.username = '$sender' ";
         $this->setQuery($sql);
 		$this->_cursor = $this->_dbh->prepare($this->_sql);
 		$this->_cursor->execute();
     }
 	
+	function selectMess($roomid) {
+		$sql = "SELECT * FROM `message` WHERE room_id = $roomid";
+		$this->setQuery($sql);
+		return $this->loadAllRows();
+	}
 
 }
  ?>

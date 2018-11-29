@@ -1,10 +1,18 @@
 <?php 
     include('php_user.php');
-    $id = $_GET['id'];
+    $frname = $_GET['frname'];
+    $roomid = $_GET['roomid'];
     $showInfoUser = new xuly();
-    $infoUser = $showInfoUser->infoUser($id);
+    $infoUser = $showInfoUser->infoUser($frname);
     $user = $infoUser['user'];
+    $sender = $_SESSION['username'];
 
+    //CODE SHOW CHAT HISTORY
+    $arrYou = $showInfoUser->infoUser($_SESSION['username']);
+    $you = $arrYou['user'];
+    $theChatHistory = new xuly();
+    $arrC = $theChatHistory->showMessageHistory($roomid);
+    $message = $arrC['chatHistory'] ;
     // ini_set("display_errors",1);
     // include("../vendor/autoload.php");
 
@@ -26,15 +34,6 @@
     //     $client->emit("new_order", $formdata);
     //     $client->close();
     // }
-
-    $theXulyMessage = new xuly();
-    if(isset($_POST['btnGuiTinNhan'])) {
-        $msg = $_POST['inputchat'];
-        $sender = $_SESSION['username'];
-        $room = $id;
-        $theXulyMessage->themMessage($msg, $sender, $room);
-    }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,20 +69,29 @@
                 </div>
                 <div class="row allmess">
                     <div id="messages">
-                        <div class="msg"><span>Hòa: Xin chào các bạn</span></div>
-                        <div class="msg"><span>Hòa: Xin chào các bạn</span></div>
-                        <div class="mymsg"><span>Hòa: Xin chào các bạn</span></div>
-                        <div class="msg"><span>Hòa: Xin chào các bạn sadfsdfsafko ko osak<br>dfo ko sakdofk kasodk osadkfo ksdokf oskfo aksof kos</span></div>
-                        <div class="mymsg"><span>Hòa: Xin chào các bạn</span></div>
+                        <?php
+                            foreach($message as $mes) {
+                                if($mes->sender == $you->id) {
+                                    ?>
+                                    <div class="mymsg"><span><?=$mes->content?></span></div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="msg"><span><?=$mes->content?></span></div>
+                                    <?php
+                                }
+                            }
+                        ?>
+                        
                     </div>
                 </div>
                 <div class="row inputmess">
-                    <form action="" method='post'>
+                    <form id="formInputChat" action="" method="post">
                         <div class="container-2">
                             <input type="text" name="inputchat" id="inputchat" placeholder="Nhập tin nhắn..." autocomplete="off">
                             <a href="#"><i class="far fa-image"></i></a>
                             <a href="#"><i class="fas fa-grin-alt"></i></a>
-                            <button type="submit" name="btnGuiTinNhan" id="btnGuiTinNhan">Gửi tin nhắn</button>
+                            <input type="submit" name="btnSendMess" id="btnSendMess" value="Gửi" style="display:none">
                         </div>
                     </form>
                 </div>
@@ -100,14 +108,19 @@
     <script>
         var socket = io.connect("http://localhost:3001");
 
-        $("#btnGuiTinNhan").click(function(){
-            var aaa = $('#inputchat').val();
-            $("#messages").append('<div class="mymsg"><span>' + aaa + '</span></div>')
+        $("#btnSendMess").click(function(){
+            var msg = $('#inputchat').val();
+            var roomid = <?php echo json_encode($roomid);?>;
+            var sender = <?php echo json_encode($sender);?>;
+            $.post("submitmess.php", {msg : msg, roomid : roomid, sender : sender}, function(data) {
+
+            });
+            
+            $("#messages").append('<div class="mymsg"><span>' + msg + '</span></div>')
             socket.emit("new_order", $('#inputchat').val());
                 $('#inputchat').val('');
                 return false;
         });
-
         socket.on("new_order", function(data) {
             $("#messages").append('<div class="msg"><span>' + data + '</span></div>');
         });

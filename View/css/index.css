@@ -1,3 +1,7 @@
+/* .container-fluid {
+    width: 1366px;
+} */
+
 .leftbar, .rightbar {
     max-height: 100vh;
     border-right: 1px solid #E5E5E9;

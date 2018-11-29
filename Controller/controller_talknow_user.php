@@ -89,9 +89,9 @@ class xuly{
 	}
 
 	//function chọn 1 user
-	function infoUser($id) {
+	function infoUser($username) {
 		$truyvan1 = new truyvan();
-		$user = $truyvan1->selectOneUser($id);
+		$user = $truyvan1->selectOneUser($username);
 		return array('user'=>$user);
 	}
 
@@ -100,10 +100,17 @@ class xuly{
 		$truyvan->insertNewFriend($username, $friendname);
 	}
 
-	function themMessage($msg, $username, $room) {
-        $truyvanms = new truyvan_message();
-        $truyvanms->insertMessage($msg, $username, $room);
-    }
+	function themMessage($msg, $roomid, $sender) {
+        $truyvanms = new truyvan();
+        $truyvanms->insertMessage($msg, $roomid, $sender);
+	}
+	
+	function showMessageHistory($roomid) {
+		$truyvanms = new truyvan();
+		$chatHistory = $truyvanms->selectMess($roomid);
+		return array('chatHistory'=>$chatHistory);
+	}
+
  }
 
 ?>

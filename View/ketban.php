@@ -82,7 +82,7 @@
                                 <div class="col-9">
                                     <form action="" method="post">
                                         <h5 id="h5-namefriend">Friend's Name</h5>
-                                        <input type="text" name="inputfriendname" value="Nam" style="display:none">
+                                        <input type="text" name="inputfriendname" value="Nga" style="display:none">
                                         <span class="form-text text-muted">Giới tính: Nam</span>
                                         <div class="row">
                                             <button class="btn btn-primary" name="btnGioiThieu">Giới thiệu</button>

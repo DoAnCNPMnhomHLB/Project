@@ -75,13 +75,20 @@
                                             $xuly = new xuly();
                                             $c_setFriendname = $xuly->c_setFriendname($fr->room_id);
                                             $friendsname = $c_setFriendname['friendsname'];
+                                            foreach($friendsname as $frn) {
+                                                $strtemp = $frn->room_name;
+                                                $lastFN = str_replace($_SESSION['username'], '', $frn->room_name);
+                                            }
+                                            $c_getInfoFriend = $xuly->infoUser($lastFN);
+                                            $infoFriend = $c_getInfoFriend['user'];
+                                            
                                         ?>
                                         <div class="col-3">
-                                            <!-- <img src="<//?=$fr->image?>" alt="This is avatar a fr"> -->
-                                            <a href="roomchat.php?id=<?=$fr->room_id?>"></a>
+                                            <img src="<?=$infoFriend->image;?>" alt="This is avatar a fr">
+                                            <a href="roomchat.php?frname=<?=$lastFN?>&roomid=<?=$fr->room_id?>"></a>
                                         </div>
                                         <div class="col-9">
-                                            <p class="friendname"><?=$friendsname->room_name?></p>
+                                            <p class="friendname"><?=$lastFN?></p>
                                             <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
                                             <a href="#"><i class="fas fa-cog"></i></a>
                                             <span class="statustime">24 phút</span>
