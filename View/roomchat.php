@@ -26,6 +26,15 @@
     //     $client->emit("new_order", $formdata);
     //     $client->close();
     // }
+
+    $theXulyMessage = new xuly();
+    if(isset($_POST['btnGuiTinNhan'])) {
+        $msg = $_POST['inputchat'];
+        $sender = $_SESSION['username'];
+        $room = $id;
+        $theXulyMessage->themMessage($msg, $sender, $room);
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,6 +101,8 @@
         var socket = io.connect("http://localhost:3001");
 
         $("#btnGuiTinNhan").click(function(){
+            var aaa = $('#inputchat').val();
+            $("#messages").append('<div class="mymsg"><span>' + aaa + '</span></div>')
             socket.emit("new_order", $('#inputchat').val());
                 $('#inputchat').val('');
                 return false;

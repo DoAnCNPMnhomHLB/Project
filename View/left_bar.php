@@ -1,8 +1,9 @@
 <?php  include("set_info_pdo.php");  ?>
 <?php 
         // include('../Controller/controller_talknow_user.php');
+        $username = $_SESSION['username'];
         $xuly = new xuly();
-        $c_setFriend = $xuly->c_setFriend();
+        $c_setFriend = $xuly->c_setFriend($username);
         $friends = $c_setFriend['friends'];
 ?>
 <div class="col-md-3 leftbar">
@@ -70,12 +71,17 @@
                             foreach($friends as $fr){
                                 ?>
                                     <div class="row yourfriend">
+                                        <?php
+                                            $xuly = new xuly();
+                                            $c_setFriendname = $xuly->c_setFriendname($fr->room_id);
+                                            $friendsname = $c_setFriendname['friendsname'];
+                                        ?>
                                         <div class="col-3">
-                                            <img src="<?=$fr->image?>" alt="This is avatar a fr">
-                                            <a href="roomchat.php?id=<?=$fr->id?>"></a>
+                                            <!-- <img src="<//?=$fr->image?>" alt="This is avatar a fr"> -->
+                                            <a href="roomchat.php?id=<?=$fr->room_id?>"></a>
                                         </div>
                                         <div class="col-9">
-                                            <p class="friendname"><?=$fr->username?></p>
+                                            <p class="friendname"><?=$friendsname->room_name?></p>
                                             <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
                                             <a href="#"><i class="fas fa-cog"></i></a>
                                             <span class="statustime">24 phút</span>

@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 09, 2018 lúc 06:30 PM
--- Phiên bản máy phục vụ: 10.1.36-MariaDB
--- Phiên bản PHP: 7.2.11
+-- Host: 127.0.0.1
+-- Generation Time: Nov 29, 2018 at 12:09 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,48 +19,56 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `talknow`
+-- Database: `talknow`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chat_history`
---
-
-CREATE TABLE `chat_history` (
-  `message_id` int(50) NOT NULL,
-  `message` text NOT NULL,
-  `sender` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `chat_room`
+-- Table structure for table `chat_room`
 --
 
 CREATE TABLE `chat_room` (
-  `room_id` int(50) NOT NULL,
-  `room_name` int(100) NOT NULL
+  `room_id` int(11) NOT NULL,
+  `room_name` varchar(100) NOT NULL,
+  `uid` int(10) NOT NULL,
+  `uid2` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `chat_room`
+--
+
+INSERT INTO `chat_room` (`room_id`, `room_name`, `uid`, `uid2`) VALUES
+(9, 'LinhNam', 14, 17);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `feedback`
+-- Table structure for table `feedback`
 --
 
 CREATE TABLE `feedback` (
   `feedback_id` int(50) NOT NULL,
+  `nameFeedback` text NOT NULL,
   `feedback` text NOT NULL,
-  `sender` text NOT NULL
+  `sender` text NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `nameFeedback`, `feedback`, `sender`, `time`) VALUES
+(11, 'Phản hồi về giao diện', 'Tương đối ổn', 'Linh', '2018-11-15 03:56:19'),
+(13, 'Phản hồi về chức năng', 'Tương đối', 'Admin', '2018-11-15 13:07:58'),
+(14, 'Phản hồi về chức năng', 'Tương đối', 'Admin', '2018-11-15 13:08:51');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `library`
+-- Table structure for table `library`
 --
 
 CREATE TABLE `library` (
@@ -72,19 +80,52 @@ CREATE TABLE `library` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `library`
+-- Dumping data for table `library`
 --
 
 INSERT INTO `library` (`documentId`, `kind_of_document`, `documentName`, `file`, `author`) VALUES
-(1, '534534', '34534', 'images/Ielts1.txt', '01'),
-(2, 'ielts', 'i1', 'images/Ielts1.txt', '01'),
-(3, 'toiec', 'toiec1', 'images/Toeic.txt', '01'),
-(4, 'toiec', 'toiec1', 'images/Toeic.txt', '01');
+(36, 'av3', 'BT_AV3', 'images/AV3.txt', 'Admin'),
+(37, 'toiec', 'Toiec 1', 'images/Toeic_1.txt', 'Thanh'),
+(39, 'others', 'Tài liệu khác', 'images/bai tap.docx', 'Trang'),
+(45, 'ielts', 'demo-edit', 'images/Toeic_1.txt', 'Admin');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `messid` int(10) NOT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `room_id` int(50) NOT NULL,
+  `sender` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roomdetail`
+--
+
+CREATE TABLE `roomdetail` (
+  `detail_id` int(11) DEFAULT NULL,
+  `room_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `roomdetail`
+--
+
+INSERT INTO `roomdetail` (`detail_id`, `room_id`, `user_id`) VALUES
+(NULL, 9, 14),
+(NULL, 9, 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -92,91 +133,126 @@ CREATE TABLE `user` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `role` varchar(3) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `sex` enum('Khong xac dinh','Nu','Nam') NOT NULL DEFAULT 'Khong xac dinh',
+  `birthday` date NOT NULL,
+  `phone` int(11) NOT NULL,
+  `image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `role`, `email`) VALUES
-(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '0', ''),
-(2, 'linh', 'e10adc3949ba59abbe56e057f20f883e', '1', ''),
-(6, 'Uyên', 'f0c1b68c82ce7eb8dd082c5459c6713d', '1', 'linh280820162@gmail.com'),
-(7, 'Uyên', 'f0c1b68c82ce7eb8dd082c5459c6713d', '1', 'linh280820162@gmail.com'),
-(8, 'Hòa', 'e10adc3949ba59abbe56e057f20f883e', '1', '123@gmail.com'),
-(9, 'linh', 'e10adc3949ba59abbe56e057f20f883e', '1', 'lelinh01051996@gmail.com'),
-(10, 'linh', 'e10adc3949ba59abbe56e057f20f883e', '1', 'lelinh01051996@gmail.com'),
-(11, 'Nga', '327f511481fbd8faae1c81f9f57a5d73', '1', 'linh280820163@gmail.com'),
-(12, 'Thịnh', 'ad46d9da7091668dbc521ba08047fcbf', '1', '12345@gmail.com');
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `email`, `sex`, `birthday`, `phone`, `image`) VALUES
+(1, 'Admin', 'e10adc3949ba59abbe56e057f20f883e', '0', 'lelinh01051996@gmail.com', 'Nu', '1996-05-01', 379170717, 'images/IMG_2177.JPG'),
+(11, 'Nga', '327f511481fbd8faae1c81f9f57a5d73', '1', 'linh280820163@gmail.com', 'Nu', '1995-04-04', 1234567890, 'images/IMG_3066.JPG'),
+(14, 'Linh', 'e10adc3949ba59abbe56e057f20f883e', '1', 'lelinh01051996@gmail.com', 'Nu', '1996-05-01', 379170717, 'images/IMG_2177.JPG'),
+(15, 'Trang', 'e10adc3949ba59abbe56e057f20f883e', '1', 'lelinh01051996@gmail.com', 'Nu', '2001-01-01', 123442678, 'images/IMG_E2214.JPG'),
+(16, 'Thanh', 'e10adc3949ba59abbe56e057f20f883e', '1', 'lelinh01051996@gmail.com', 'Nam', '1994-04-04', 124356768, 'images/IMG_8616.JPG'),
+(17, 'Nam', 'e10adc3949ba59abbe56e057f20f883e', '1', 'lelinh01051996@gmail.com', 'Nam', '2005-01-01', 23345667, 'images/IMG_2177.JPG');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `chat_history`
---
-ALTER TABLE `chat_history`
-  ADD PRIMARY KEY (`message_id`);
-
---
--- Chỉ mục cho bảng `chat_room`
+-- Indexes for table `chat_room`
 --
 ALTER TABLE `chat_room`
-  ADD PRIMARY KEY (`room_id`);
+  ADD PRIMARY KEY (`room_id`),
+  ADD KEY `fk_uid` (`uid`),
+  ADD KEY `fk_uid2` (`uid2`);
 
 --
--- Chỉ mục cho bảng `feedback`
+-- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedback_id`);
 
 --
--- Chỉ mục cho bảng `library`
+-- Indexes for table `library`
 --
 ALTER TABLE `library`
   ADD PRIMARY KEY (`documentId`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`messid`),
+  ADD KEY `fk_room_id` (`room_id`);
+
+--
+-- Indexes for table `roomdetail`
+--
+ALTER TABLE `roomdetail`
+  ADD PRIMARY KEY (`room_id`,`user_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `chat_history`
---
-ALTER TABLE `chat_history`
-  MODIFY `message_id` int(50) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `chat_room`
+-- AUTO_INCREMENT for table `chat_room`
 --
 ALTER TABLE `chat_room`
-  MODIFY `room_id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `feedback`
+-- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `feedback_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT cho bảng `library`
+-- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `documentId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `documentId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `messid` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `chat_room`
+--
+ALTER TABLE `chat_room`
+  ADD CONSTRAINT `fk_uid` FOREIGN KEY (`uid`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `fk_uid2` FOREIGN KEY (`uid2`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `fk_room_id` FOREIGN KEY (`room_id`) REFERENCES `chat_room` (`room_id`);
+
+--
+-- Constraints for table `roomdetail`
+--
+ALTER TABLE `roomdetail`
+  ADD CONSTRAINT `roomdetail_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `chat_room` (`room_id`),
+  ADD CONSTRAINT `roomdetail_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -24,8 +24,10 @@ function emitNewOrder(http_server) {
     io.sockets.on('connection', function (socket) {
         socket.on("new_order", function(data) {
             console.log(data);
-            io.emit("new_order", data);
-        });
+            socket.broadcast.emit("new_order", data);
+        }); 
+    
+
     });
 }
 

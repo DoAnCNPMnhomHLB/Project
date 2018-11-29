@@ -48,11 +48,16 @@ class truyvan extends database{
 		return 1;
 	}
 	//function truy xuất tên người dùng làm danh sách bạn bè
-	function setFriend(){
-		$sql = "SELECT * FROM user";
+	function setFriend($username){
+		$sql = "SELECT room_id FROM roomdetail WHERE user_id = (SELECT id FROM `user` WHERE username = '$username') ";
 		$this->setQuery($sql);
 		return $this->loadAllRows();
+	}
 
+	function setFriendFromRoomID($id){
+		$sql = "SELECT room_name FROM chat_room WHERE room_id = $id ";
+		$this->setQuery($sql);
+		return $this->loadAllRows();
 	}
 
 	function selectOneUser($id) {
@@ -60,6 +65,28 @@ class truyvan extends database{
 		$this->setQuery($sql);
 		return $this->loadRow();
 	}
+
+	function insertNewFriend($username , $friendname) {
+		$sql = "INSERT INTO chat_room (room_name, uid, uid2) SELECT '$username$friendname', x.id, y.id FROM `user` AS x CROSS JOIN `user` AS y WHERE x.`username` = '$username' AND y.`username` = '$friendname'";
+		$this->setQuery($sql);
+		$this->_cursor = $this->_dbh->prepare($this->_sql);
+		$this->_cursor->execute();
+		$sql = "INSERT INTO roomdetail(room_id, user_id) SELECT cr.room_id, ur.id FROM chat_room AS cr CROSS JOIN `user` AS ur WHERE  cr.room_name = '$username$friendname' AND ur.username = '$username' ";
+		$this->setQuery($sql);
+		$this->_cursor = $this->_dbh->prepare($this->_sql);
+		$this->_cursor->execute();
+		$sql = "INSERT INTO roomdetail(room_id, user_id) SELECT cr.room_id, ur.id FROM chat_room AS cr CROSS JOIN `user` AS ur WHERE  cr.room_name = '$username$friendname' AND ur.username = '$friendname' ";
+		$this->setQuery($sql);
+		$this->_cursor = $this->_dbh->prepare($this->_sql);
+		$this->_cursor->execute();
+	}
+
+	function insertMessage($msg, $sender, $room) {
+        $sql = "INSERT INTO message(content, room_id, sender) SELECT '$msg' , cr.room";
+        $this->setQuery($sql);
+		$this->_cursor = $this->_dbh->prepare($this->_sql);
+		$this->_cursor->execute();
+    }
 	
 
 }

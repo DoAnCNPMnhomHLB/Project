@@ -76,18 +76,34 @@ class xuly{
 	}
 
 	//function điều hướng lấy user làm danh sách bạn bè
-	function c_setFriend(){
+	function c_setFriend($username){
 		$truyvan = new truyvan();
-		$friends = $truyvan->setFriend();
+		$friends = $truyvan->setFriend($username);
 		return array('friends'=>$friends);
+	}
+
+	function c_setFriendname($id){
+		$truyvan = new truyvan();
+		$friendsname = $truyvan->setFriendFromRoomID($id);
+		return array('friendsname'=>$friendsname);
 	}
 
 	//function chọn 1 user
 	function infoUser($id) {
-		$truyvan = new truyvan();
-		$user = $truyvan->selectOneUser($id);
+		$truyvan1 = new truyvan();
+		$user = $truyvan1->selectOneUser($id);
 		return array('user'=>$user);
 	}
-}
+
+	function themBanBe($username, $friendname) {
+		$truyvan = new truyvan();
+		$truyvan->insertNewFriend($username, $friendname);
+	}
+
+	function themMessage($msg, $username, $room) {
+        $truyvanms = new truyvan_message();
+        $truyvanms->insertMessage($msg, $username, $room);
+    }
+ }
 
 ?>

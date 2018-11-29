@@ -31,4 +31,13 @@
         $_SESSION['username'] = $username;                
     }
 
+    //module kết bạn
+    $theUserController  = new xuly();
+    if(isset($_POST['btnKetBan'])) {
+        $friendname = $_POST['inputfriendname'];
+        $username = $_SESSION['username'];
+        $theUserController->themBanBe($username, $friendname);
+    }
+
+    
     ?>

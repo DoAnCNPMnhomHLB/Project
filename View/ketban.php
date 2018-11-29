@@ -1,5 +1,6 @@
 <?php 
     include('php_user.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,12 +80,15 @@
                                     <img src="images/avatar-men.png" alt="avatar">
                                 </div>
                                 <div class="col-9">
-                                    <h5 id="h5-namefriend">Friend's Name</h5>
-                                    <span class="form-text text-muted">Giới tính: Nam</span>
-                                    <div class="row">
-                                        <button class="btn btn-primary">Giới thiệu</button>
-                                        <button class="btn btn-success">Kết bạn</button>
-                                    </div>
+                                    <form action="" method="post">
+                                        <h5 id="h5-namefriend">Friend's Name</h5>
+                                        <input type="text" name="inputfriendname" value="Nam" style="display:none">
+                                        <span class="form-text text-muted">Giới tính: Nam</span>
+                                        <div class="row">
+                                            <button class="btn btn-primary" name="btnGioiThieu">Giới thiệu</button>
+                                            <button class="btn btn-success" name="btnKetBan">Kết bạn</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
