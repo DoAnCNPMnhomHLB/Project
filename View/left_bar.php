@@ -14,10 +14,12 @@
                     <div class="col-9">
                         <h6><a href="#" class="username" data-toggle="modal" data-target="#modal-updateinfo"><?php echo $_SESSION['username']; ?></a></h6>
                         <div class="box">
-                            <div class="container-1">
-                                <a href="#" class="icon"><i class="fa fa-search"></i></a>
-                                <input type="search" id="search" placeholder="Tìm kiếm bạn bè" />
-                            </div>
+                            <form action="" method="POST">
+                                <div class="container-1">
+                                    <a href="#" class="icon"><i class="fa fa-search"></i></a>
+                                    <input type="search" id="search" placeholder="Tìm kiếm bạn bè" />
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -62,29 +64,45 @@
 
                         </div>
                     </div>
-                    <div class="col-9 listfriendbar">
+                    <div class="col-9 listfriendbar" >
                         <div class="row filtermess">
                             <a href="#">Tin nhắn <i class="fas fa-caret-down"></i></a>
                         </div>
-                        <?php
-                            foreach($friends as $fr){
-                                ?>
-                                    <div class="row yourfriend">
-                                        <div class="col-3">
-                                            <img src="<?=$fr->image?>" alt="This is avatar a fr">
-                                            <a href="roomchat.php?id=<?=$fr->id?>"></a>
+                        <div id="datasearch">
+                            <?php
+                                foreach($friends as $fr){
+                                    ?>
+                                        <div class="row yourfriend">
+                                            <div class="col-3">
+                                                <img src="<?=$fr->image?>" alt="This is avatar a fr">
+                                                <a href="roomchat.php?id=<?=$fr->id?>"></a>
+                                            </div>
+                                            <div class="col-9">
+                                                <p class="friendname"><?=$fr->username?></p>
+                                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
+                                                <a href="#"><i class="fas fa-cog"></i></a>
+                                                <span class="statustime">24 phút</span>
+                                            </div>
                                         </div>
-                                        <div class="col-9">
-                                            <p class="friendname"><?=$fr->username?></p>
-                                            <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                            <a href="#"><i class="fas fa-cog"></i></a>
-                                            <span class="statustime">24 phút</span>
-                                        </div>
-                                    </div>
-                                <?php
-                            }
-                        ?>
-
+                                    <?php
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
+                <script src="js/jquery-3.3.1.min.js"></script>
+                <script src="js/popper.min.js"></script>
+                <script src="bootstrap/js/bootstrap.js"></script>
+                <script src="js/index.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        $("#search").keyup(function(){
+                            var keyword = $('#search').val();
+                            $.post("A_timkiembanbe.php", {tukhoa: keyword}, function(data){
+                                // $('#datasearch').empty();
+                                $('#datasearch').html(data);
+                            })
+                        })
+                    })
+                </script>
 </div>

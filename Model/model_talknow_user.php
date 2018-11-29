@@ -64,7 +64,7 @@ class truyvan extends database{
 	
 	// function tìm kiếm bạn bè
 	function m_timkiembanbe($key_name){
-		$sql = "SELECT * FROM user WHERE username = '$key_name' ";
+		$sql = "SELECT * FROM user WHERE username like '$key_name%' ";
 		$this->setQuery($sql);
 		return $this->loadAllRows();
 	}

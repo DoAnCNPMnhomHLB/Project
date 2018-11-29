@@ -108,6 +108,13 @@ class xuly{
 		$user = $truyvan->selectOneUser($id);
 		return array('user'=>$user);
 	}
+
+	//function tìm kiếm bạn bè
+	function timkiem($key_name){
+		$m_timkiembanbe = new truyvan();
+		$banbe = $m_timkiembanbe->m_timkiembanbe($key_name);
+		return $banbe;
+	}
 }
 
 ?>
