@@ -213,11 +213,15 @@
     height: 70px;
 }
 
-.container-2 {
+#formInputChat {
     width: 100%;
 }
 
-textarea#chat {
+.inputmess .container-2 {
+    width: 100%;
+}
+
+input#inputchat {
     width: 85%;
     height: 35px;
     resize: none;
@@ -236,7 +240,7 @@ textarea#chat {
     margin-left: 5%;
 }
 
-textarea#chat:focus {
+input#inputchat:focus {
     background: white;
     border: 2px solid #fbc000;
 }
