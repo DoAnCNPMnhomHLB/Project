@@ -55,12 +55,20 @@ class truyvan extends database{
 
 	}
 
+	//
 	function selectOneUser($id) {
 		$sql = "SELECT * FROM user WHERE id = '$id'; ";
 		$this->setQuery($sql);
 		return $this->loadRow();
 	}
 	
+	// function tìm kiếm bạn bè
+	function m_timkiembanbe($key_name){
+		$sql = "SELECT * FROM user WHERE username = '$key_name' ";
+		$this->setQuery($sql);
+		return $this->loadAllRows();
+	}
+
 
 }
  ?>

@@ -5,7 +5,9 @@
     }
 ?>
 
-
+<div class="row div-titleketqua">
+    <h5 style = "color: Orange;">Kết quả tìm kiếm</h5>
+</div>
 <table id="table-phanhoi" class="table">
     <thead>
         <tr class="d-flex">

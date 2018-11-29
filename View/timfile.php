@@ -3,7 +3,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,15 +40,11 @@
                                 <label for="input-tentailieu" class="col-form-label">Nhập tên tài liệu cần tìm:</label>
                                 <input type="text" class="form-control" id="input-tentailieu" placeholder="Nhập tên tài liệu">
                             </div>
-                            <button type="button" class="btn mybtn" id="btn_search">Tìm kiếm</button>
+                            <!-- <button type="button" class="btn mybtn" id="btn_search">Tìm kiếm</button> -->
                         </form>
                     </div>
                 </div>
-                <div class="row div-titleketqua">
-                    <h5>Kết quả tìm kiếm</h5>
-                </div>
                 <div id="data_search">
-
                 </div>
             </div>
         </div>
@@ -63,7 +58,7 @@
     <script src="js/index.js"></script>
     <script>
         $(document).ready(function(){
-            $("#btn_search").click(function(){
+            $("#input-tentailieu").keyup(function(){
                 var keyword = $('#input-tentailieu').val();
                 $.post("A_tracuutailieu.php", {tukhoa: keyword}, function(data){
                     $('#data_search').html(data);
