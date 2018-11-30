@@ -9,8 +9,9 @@
 <div class="col-md-3 leftbar">
                 <div class="row userbar">
                     <div class="col-3 avatar">
-                        <a href="#" data-toggle="modal" data-target="#modal-updateinfo"><img src="<?php echo $hung_image;?>"
-                                alt="Ảnh đại diện"></a>
+                        <a href="#" data-toggle="modal" data-target="#modal-updateinfo">
+                        <div class="divavatar" style="background-image: url(<?= $hung_image ?>);"></div>
+                        </a>
                     </div>
                     <div class="col-9">
                         <h6><a href="#" class="username" data-toggle="modal" data-target="#modal-updateinfo"><?php echo $_SESSION['username']; ?></a></h6>
@@ -67,37 +68,53 @@
                         <div class="row filtermess">
                             <a href="#">Tin nhắn <i class="fas fa-caret-down"></i></a>
                         </div>
-                        <?php
-                            foreach($friends as $fr){
-                                ?>
-                                    <div class="row yourfriend">
-                                        <?php
-                                            $xuly = new xuly();
-                                            $c_setFriendname = $xuly->c_setFriendname($fr->room_id);
-                                            $friendsname = $c_setFriendname['friendsname'];
-                                            foreach($friendsname as $frn) {
-                                                $strtemp = $frn->room_name;
-                                                $lastFN = str_replace($_SESSION['username'], '', $frn->room_name);
-                                            }
-                                            $c_getInfoFriend = $xuly->infoUser($lastFN);
-                                            $infoFriend = $c_getInfoFriend['user'];
-                                            
-                                        ?>
-                                        <div class="col-3">
-                                            <img src="<?=$infoFriend->image;?>" alt="This is avatar a fr">
-                                            <a href="roomchat.php?frname=<?=$lastFN?>&roomid=<?=$fr->room_id?>"></a>
+                        <div id="datasearch">
+                            <?php
+                                foreach($friends as $fr){
+                                    ?>
+                                        <div class="row yourfriend">
+                                            <?php
+                                                $xuly = new xuly();
+                                                $c_setFriendname = $xuly->c_setFriendname($fr->room_id);
+                                                $friendsname = $c_setFriendname['friendsname'];
+                                                foreach($friendsname as $frn) {
+                                                    $strtemp = $frn->room_name;
+                                                    $lastFN = str_replace($_SESSION['username'], '', $frn->room_name);
+                                                }
+                                                $c_getInfoFriend = $xuly->infoUser($lastFN);
+                                                $infoFriend = $c_getInfoFriend['user'];
+                                                
+                                            ?>
+                                            <div class="col-3">
+                                                <div class="divavatarfr" style="background-image: url(<?= $infoFriend->image ?>);"></div>
+                                                <a href="roomchat.php?frname=<?=$lastFN?>&roomid=<?=$fr->room_id?>"></a>
+                                            </div>
+                                            <div class="col-9">
+                                                <p class="friendname"><?=$lastFN?></p>
+                                                <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
+                                                <a href="#"><i class="fas fa-cog"></i></a>
+                                                <span class="statustime">24 phút</span>
+                                            </div>
                                         </div>
-                                        <div class="col-9">
-                                            <p class="friendname"><?=$lastFN?></p>
-                                            <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
-                                            <a href="#"><i class="fas fa-cog"></i></a>
-                                            <span class="statustime">24 phút</span>
-                                        </div>
-                                    </div>
-                                <?php
-                            }
-                        ?>
+                                    <?php
+                                }
+                            ?>
+                        </div>
 
                     </div>
                 </div>
+                <script src="js/jquery-3.3.1.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        $("#search").keyup(function(){
+                            var keyword = $('#search').val();
+                            var sessionname = <?php echo json_encode($username)?>;
+                            $.post("A_timkiembanbe.php", {tukhoa: keyword, sessionname : sessionname}, function(data){
+                                // $('#datasearch').empty();
+                                $('#datasearch').html(data);
+                            })
+                        })
+                    })
+                </script>
 </div>
+

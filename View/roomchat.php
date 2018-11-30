@@ -55,7 +55,7 @@
             <div class="col-md-9 rightbar">
                 <div class="row titlebar">
                     <div class="col-1">
-                        <img id="avatarOfFriend" src="<?=$user->image?>" alt="This is avatar">
+                        <div class="divavatar" style="background-image: url(<?=$user->image ?>); margin-left: 20px;"></div>
                     </div>
                     <div class="col-9">
                         <h5><?=$user->username?></h5>

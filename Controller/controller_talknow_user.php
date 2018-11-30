@@ -111,6 +111,32 @@ class xuly{
 		return array('chatHistory'=>$chatHistory);
 	}
 
+	function timkiem($key_name){
+		$m_timkiembanbe = new truyvan();
+		$banbe = $m_timkiembanbe->m_timkiembanbe($key_name);
+		return $banbe;
+	}
+
+	function timTrongList($keyname,$sessionname) {
+		$truyvanuser = new truyvan();
+		$result = $truyvanuser->searchInListFriend($keyname,$sessionname);
+		return $result;
+	}
+
+	public function checkPass($username, $md5_password,	$md5_newpass)
+	{
+		$truyvan = new truyvan();
+		$user = $truyvan->dangnhap($username, $md5_password);
+		if($user==true)
+		{
+			$truyvan->changePass($username, $md5_newpass);
+			echo "<script>	alert(\"Đổi mật khẩu thành công!\");</script>";
+		}
+		else
+		{
+			echo "<script>	alert(\"Mật khẩu nhập sai!\");</script>";
+		}
+	}
  }
 
 ?>

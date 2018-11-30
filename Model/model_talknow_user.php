@@ -94,5 +94,24 @@ class truyvan extends database{
 		return $this->loadAllRows();
 	}
 
+	// function tìm kiếm bạn bè
+	function m_timkiembanbe($key_name){
+		$sql = "SELECT * FROM user WHERE username like '$key_name%' ";
+		$this->setQuery($sql);
+		return $this->loadAllRows();
+	}
+
+	function searchInListFriend($key,$sessionname) {
+		$sql = "SELECT * FROM `chat_room` WHERE room_name like '%$key%' AND (uid = (SELECT id FROM `user` WHERE username = '$sessionname') OR uid2 = (SELECT id FROM `user` WHERE username = '$sessionname'))";
+		$this->setQuery($sql);
+		return $this->loadAllRows();
+	}
+
+	function changePass($username, $newpass) {
+		$sql = "UPDATE `user` SET `password` = '$newpass' WHERE `username` = '$username'";
+		$this->setQuery($sql);
+		$this->execute();
+	}
+
 }
  ?>

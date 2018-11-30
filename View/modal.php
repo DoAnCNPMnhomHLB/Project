@@ -11,14 +11,14 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form action="" method="post">
                 <div class="modal-body">
-                    <form>
                         <div class="row">
                             <div class="col-5">
                                 <label for="current-password">Mật khẩu hiện tại: </label>
                             </div>
                             <div class="col-7">
-                                <input type="password" name="current-password" id="current-password" value="">
+                                <input type="password" name="currentpassword" id="current-password" value="">
                             </div>
                         </div>
                         <div class="row">
@@ -26,7 +26,7 @@
                                 <label for="new-password">Mật khẩu mới: </label>
                             </div>
                             <div class="col-7">
-                                <input type="password" name="new-password" id="new-password" value="">
+                                <input type="password" name="newpassword" id="new-password" value="">
                             </div>
                         </div>
                         <div class="row">
@@ -34,15 +34,25 @@
                                 <label for="comfirm-password">Nhập lại mật khẩu mới: </label>
                             </div>
                             <div class="col-7">
-                                <input type="password" name="comfirm-password" id="comfirm-password" value="">
+                                <input type="password" name="comfirmpassword" id="comfirm-password" value="">
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-primary mybtn">Lưu</button>
+                    <button type="submit" class="btn btn-primary mybtn" name="btnDoiMatKhau">Lưu</button>
                 </div>
+                </form>
+                <?php
+                    if(isset($_POST['btnDoiMatKhau'])) {
+                        $pass = $_POST['currentpassword'];
+                        $npass = $_POST['newpassword'];
+                        $cpass = $_POST['comfirmpassword'];
+                        if ($npass != $cpass) {
+                            echo "<script>$(document).ready(function() { alert(\"Mật khẩu xác nhận chưa khớp!! Vui lòng thử lại\"); });</script>";
+                        }
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -59,16 +69,21 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data" id="myformupdate">
                 <div class="modal-body">
                         <div class="row">
+                        <p id="error1" style="display:none; color:#FF0000;">Định dạng ảnh không hợp lệ! Định dạng phải là JPG, JPEG, PNG or GIF.</p>
+                        <p id="error2" style="display:none; color:#FF0000;">Giới hạn kích thước ảnh tối đa là 2MB.</p>
+                        </div>
+                        <div class="row">
                             <div class="col-4">
-                                <img src="<?php echo $hung_image;?>" alt="avatar">
+                                <img id="blah" src="<?php echo $hung_image;?>" alt="avatar">
                             </div>
                             <div class="col-8">
-                                <input type="file" name="inputanh" id="inputanh" class="inputfile">
+                                <input type="file" name="inputanh" id="inputanh" class="inputfile" accept="image/gif, image/jpeg, image/png" onchange="readURL(this);">
                                 <label for="inputanh" id="lb-loadanh">Sửa ảnh đại diện</label>
                             </div>
+                            
                         </div>
                         <div class="row">
                             <div class="col-4">
@@ -123,6 +138,49 @@
                 </form>
             </div>
         </div>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah')
+                            .attr('src', e.target.result)
+                            .width(120)
+                            .height(120);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            //$('input[type="submit"]').prop("disabled", true);
+            var a=0;
+            $('#inputanh').bind('change', function() {
+                if ($('input:submit').attr('disabled',false)){
+                $('input:submit').attr('disabled',true);
+                }
+                var ext = $('#inputanh').val().split('.').pop().toLowerCase();
+                if ($.inArray(ext, ['gif','png','jpg','jpeg']) == -1){
+                    $('#error1').slideDown("slow");
+                    $('#error2').slideUp("slow");
+                    a=0;
+                    }else{
+                    var picsize = (this.files[0].size);
+                    if (picsize > 2000000){
+                    $('#error2').slideDown("slow");
+                    a=0;
+                    }else{
+                    a=1;
+                    $('#error2').slideUp("slow");
+                    }
+                    $('#error1').slideUp("slow");
+                    if (a==1){
+                        $('input:submit').attr('disabled',false);
+                        }
+                }
+            });
+        </script>
     </div>
 
     <!--modal tạo nhóm-->

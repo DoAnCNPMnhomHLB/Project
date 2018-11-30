@@ -39,5 +39,11 @@
         $theUserController->themBanBe($username, $friendname);
     }
 
-    
+    $thePassword = new xuly();
+    if(isset($_POST['btnDoiMatKhau'])) {
+        $username = $_SESSION['username'];
+        $pass = $_POST['currentpassword'];
+        $npass = $_POST['newpassword'];
+        $thePassword->checkPass($username, md5($pass), md5($npass));
+    }
     ?>

@@ -11,7 +11,7 @@ class m_library extends database{
 
 	//function tra cứu tài liệu
 	function search($key){
-		$sql = "SELECT * FROM library WHERE documentName like '$key' or kind_of_document like '$key'";
+		$sql = "SELECT * FROM library WHERE documentName like '%$key%' or kind_of_document like '%$key%'";
 		$this->setQuery($sql);
 		return $this->loadAllRows(array($key)); 
 	}

@@ -16,10 +16,34 @@
     height: calc(100vh - 70px);
 }
 
-.avatar img {
+/* .avatar img {
     width: 55px;
     border-radius: 50%;
     margin: 7px auto;
+} */
+
+.divavatar {
+    width: 55px;
+    height: 55px;
+    margin: 7px auto;
+    border-radius: 50%;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.divavatarfr {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-top: 7px;
+    left: 5px;
+    border-radius: 50%;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 .userbar .username {
@@ -372,10 +396,6 @@ input#inputchat:focus {
     color: black;
     border: 1px solid #ccc;
     font-weight: 400;
-}
-
-#avatarOfFriend {
-    border-radius: 50%;
 }
 
 #messages {

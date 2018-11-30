@@ -1,5 +1,6 @@
 <?php 
     include('php_user.php');
+    $theShowUser = new xuly();
 
 ?>
 <!DOCTYPE html>
