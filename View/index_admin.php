@@ -37,7 +37,7 @@
             <?php include('left_bar.php');?>
             <div class="col-md-9 rightbar">
                 <div class="row titlebar">
-                    <a href="xylyphanhoi.php" target="main-iframe" class="btn btn-outline-warning">Xử lý phản
+                    <a href="xylyphanhoi.php" target="main-iframe" class="btn btn-outline-warning">Quản lý phản
                         hồi</a>
                     <a href="qlnguoidung.php" target="main-iframe" class="btn btn-outline-warning">Quản lý người
                         dùng</a>

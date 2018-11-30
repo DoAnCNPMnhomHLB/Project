@@ -8,7 +8,7 @@ if(isset($_POST['btn_login']))
 {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$user = $xuly->dangnhapTK($username,md5($password));
+	$user = $xuly->dangnhapTK($username,$password);
 }
 
 ?>
@@ -68,7 +68,7 @@ if(isset($_POST['btn_login']))
                             <p>Tên người dùng</p>
                             <p>Email đăng ký</p>
                             <p>Mật khẩu</p>
-                        <!-- <p>Xác nhận mật khẩu</p> -->
+                            <p>Xác nhận mật khẩu</p>
                         </div>
                         <div class="div-form">                    
                                 <input type="text" placeholder="Họ và tên" id="ho" name="username_signin">
@@ -78,12 +78,12 @@ if(isset($_POST['btn_login']))
                                 <input type="password" placeholder="Password*" id="pass" name="password_signin">
                                 <br>
                                 <p class="p-pass">Tối thiểu 6 ký tự</p>
-                                <!-- <input type="password" placeholder="Comfirm Password*" id="c-pass"> -->
+                                <input type="password" placeholder="Comfirm Password*" id="c-pass" name="cpassword">
                         </div>
                         <div class="div-xacnhan">
-                                <input type="checkbox" name="privacy" value="accept">
+                                <!-- <input type="checkbox" name="privacy" value="accept">
                                 <span>Tôi đã đọc và chấp nhận <a href="policy.html" id="privacy-policy" title="Xem điều khoản bảo mật" target="_blank">Điều khoản bảo mật</a> từ website</span>
-                                <br>
+                                <br> -->
                                 <button href="#" class="button-signup" name="btn_signin">Đăng ký</button>
                                 <p class="go-login">Tôi đã có tài khoản! <a href="#" title="Đăng nhập" onclick="Signin();">Đăng nhập</a> ngay</p>
                         </div>
@@ -104,8 +104,18 @@ $c_talknow = new xuly();
 if(isset($_POST['btn_signin']))
 {
 	$username_signin 			   = $_POST['username_signin'];
-	$password_signin		   	   = $_POST['password_signin'];
-	$email 				 		   = $_POST['email'];
-	$signin = $c_talknow->signin(null, $username_signin, md5($password_signin), 1, $email );		
+    $password_signin		   	   = $_POST['password_signin'];
+    $comfirmpassword               = $_POST['cpassword']; 
+    $email 				 		   = $_POST['email'];
+    if($password_signin === $comfirmpassword) 
+    {
+        $signin = $c_talknow->signin(null, $username_signin, $password_signin, 1, $email );	
+    } 
+    else 
+    {
+        echo $comfirmpassword.$password_signin;
+        echo '<script>alert("Mật khẩu xác nhận không khớp.")</script>';
+    }
+		
 }
 ?> 

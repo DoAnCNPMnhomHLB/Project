@@ -93,7 +93,7 @@
                                                 <p class="friendname"><?=$lastFN?></p>
                                                 <p class="shownewestchat">Bạn: Đây là đoạn chat mới...</p>
                                                 <a href="#"><i class="fas fa-cog"></i></a>
-                                                <span class="statustime">24 phút</span>
+                                                <span class="statustime"><i class="fas fa-circle" style="font-size:7pt;color:#1cff2b;"></i></span>
                                             </div>
                                         </div>
                                     <?php

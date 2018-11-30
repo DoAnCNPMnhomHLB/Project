@@ -123,10 +123,24 @@ body {
     margin-left: 240px;
 }
 
-.button-login, .button-signup {
+.button-login {
     display: inline-block;
-    padding: 10px 105px;
+    padding: 10px 90px;
     margin-left: 140px;
+    color: white;
+    font-size: 15pt;
+    font-weight: bold;
+    background-color: #faa731;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 3px solid #a96000;
+    outline: none;
+}
+
+.button-signup {
+    display: inline-block;
+    padding: 10px 115px;
+    margin-left: 15px;
     color: white;
     font-size: 15pt;
     font-weight: bold;
@@ -296,11 +310,6 @@ hr {
     text-decoration: underline;
 }
 
-.button-signup {
-    margin-top: 10px;
-    margin-left: 165px;
-    width: 100px;
-}
 
 .go-login {
     margin-top: 20px;
@@ -309,7 +318,7 @@ hr {
 
 .div-xacnhan {
     width: 550px;
-    height: 100px;
+    height: 200px;
     margin-top: 250px;
 }
 

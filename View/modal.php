@@ -43,16 +43,7 @@
                     <button type="submit" class="btn btn-primary mybtn" name="btnDoiMatKhau">Lưu</button>
                 </div>
                 </form>
-                <?php
-                    if(isset($_POST['btnDoiMatKhau'])) {
-                        $pass = $_POST['currentpassword'];
-                        $npass = $_POST['newpassword'];
-                        $cpass = $_POST['comfirmpassword'];
-                        if ($npass != $cpass) {
-                            echo "<script>$(document).ready(function() { alert(\"Mật khẩu xác nhận chưa khớp!! Vui lòng thử lại\"); });</script>";
-                        }
-                    }
-                ?>
+                
             </div>
         </div>
     </div>
@@ -368,8 +359,8 @@
                             <div class="col-6">
                                 Liên hệ <br>
                                 __ <br>
-                                <b>Tổng đài:</b>123456789<br><br>
-                                <b>Email:</b>chuaco@gmail.com<br>
+                                <b>Tổng đài:</b>0987647814<br><br>
+                                <b>Email:</b>hoapes2011@gmail.com<br>
                             </div>
                         </div>
                     </div>

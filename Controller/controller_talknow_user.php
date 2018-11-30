@@ -5,50 +5,69 @@ class xuly{
 	//FUNCTION ĐĂNG NHẬP
 	public function dangnhapTK($username, $md5_password)
 	{
-		$truyvan = new truyvan();
-		$user = $truyvan->dangnhap($username, $md5_password);
-		if($user==true)
+		if($username == "" || $md5_password == "")
 		{
-			if (($user->role)==0)
-			{
-				$_SESSION['username'] = $username;
-				header("LOCATION:index_admin.php");
-			}
-			else
-			{
-				
-				$_SESSION['username'] = $username;
-				header("LOCATION:index_user.php");
-			}
+			echo '<script language="javascript">alert("Không được để trống thông tin đăng nhập.")</script>';
 		}
 		else
 		{
-			echo '<script language="javascript">alert("Sai thông tin đăng nhập.")</script>';
+			$truyvan = new truyvan();
+			$user = $truyvan->dangnhap($username, md5($md5_password));
+			if($user==true)
+			{
+				if (($user->role)==0)
+				{
+					$_SESSION['username'] = $username;
+					header("LOCATION:index_admin.php");
+				}
+				else
+				{
+					
+					$_SESSION['username'] = $username;
+					header("LOCATION:index_user.php");
+				}
+			}
+			else
+			{
+				echo '<script language="javascript">alert("Sai thông tin đăng nhập.")</script>';
+			}
 		}
 	}
 	
 	//FUNCTION ĐĂNG KÝ
 	function signin($id, $username, $password, $role, $email)
 	{
-		$truyvan = new truyvan();
-		$ktDangky = $truyvan->kiemtraDangky($username);
-		if($ktDangky==true)
+		if($username == "" || $password == "" || $email =="")
 		{
-			echo '<script language="javascript">alert("Tài khoản đã tồn tại! Hãy đăng nhập..")</script>';
+			echo '<script language="javascript">alert("Không được để trống thông tin đăng ký.")</script>';
+		}
+		else if(strlen($password) < 6)
+		{	
+			echo '<script language="javascript">alert("Mật khẩu không được ít hơn 6 ký tự.")</script>';
 		}
 		else
 		{
-			$them = $truyvan->signin($id, $username, $password, $role, $email);
-			if($them->rowCount()>0)
 			{
-				echo '<script language="javascript">alert("Đăng ký thành công")</script>';
-			}
-			else
-			{
-				print "<a href='javascript:history.go(-1)'><center><B>Không thành công, vui lòng kiểm tra lại.</center></B></a>";
+				$truyvan = new truyvan();
+				$ktDangky = $truyvan->kiemtraDangky($username);
+				if($ktDangky==true)
+				{
+					echo '<script language="javascript">alert("Tài khoản đã tồn tại! Hãy đăng nhập..")</script>';
+				}
+				else
+				{
+					$them = $truyvan->signin($id, $username, md5($password), $role, $email);
+					if($them->rowCount()>0)
+					{
+						echo '<script language="javascript">alert("Đăng ký thành công")</script>';
+					}
+					else
+					{
+						print "<a href='javascript:history.go(-1)'><center><B>Không thành công, vui lòng kiểm tra lại.</center></B></a>";
+					}
+				}
 			}
 		}
-
 	}
 	//function đăng xuất
 	function logout(){
@@ -123,19 +142,32 @@ class xuly{
 		return $result;
 	}
 
-	public function checkPass($username, $md5_password,	$md5_newpass)
+	function timTrongDB($key,$sessionname) {
+		$truyvanuser = new truyvan();
+		$result =$truyvanuser->searchFriendInDB($key, $sessionname);
+		return $result;
+	}
+
+	public function checkPass($username, $md5_password,	$md5_newpass, $cpass)
 	{
 		$truyvan = new truyvan();
-		$user = $truyvan->dangnhap($username, $md5_password);
-		if($user==true)
-		{
-			$truyvan->changePass($username, $md5_newpass);
-			echo "<script>	alert(\"Đổi mật khẩu thành công!\");</script>";
+		if (strlen($md5_newpass) < 6) {
+			echo '<script language="javascript">alert("Mật khẩu không được ít hơn 6 ký tự.")</script>';
+		} else if ($md5_newpass != $cpass) {
+			echo '<script language="javascript">alert("Mật khẩu xác nhận không khớp!")</script>';
+		} else {
+			$user = $truyvan->dangnhap($username, md5($md5_password));
+			if($user==true)
+			{
+				$truyvan->changePass($username, md5($md5_newpass));
+				echo "<script>	alert(\"Đổi mật khẩu thành công!\");</script>";
+			}
+			else
+			{
+				echo "<script>	alert(\"Mật khẩu nhập sai!\");</script>";
+			}
 		}
-		else
-		{
-			echo "<script>	alert(\"Mật khẩu nhập sai!\");</script>";
-		}
+		
 	}
  }
 

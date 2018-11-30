@@ -1,7 +1,7 @@
 <?php 
     include('php_user.php');
+    $username = $_SESSION['username'];
     $theShowUser = new xuly();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,103 +74,7 @@
                     <h5>Bạn đề nghị</h5>
                 </div>
                 <div class="row div-bandenghi">
-                    <div class="row">
-                        <div class="col friend-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="images/avatar-men.png" alt="avatar">
-                                </div>
-                                <div class="col-9">
-                                    <form action="" method="post">
-                                        <h5 id="h5-namefriend">Friend's Name</h5>
-                                        <input type="text" name="inputfriendname" value="Nga" style="display:none">
-                                        <span class="form-text text-muted">Giới tính: Nam</span>
-                                        <div class="row">
-                                            <button class="btn btn-primary" name="btnGioiThieu">Giới thiệu</button>
-                                            <button class="btn btn-success" name="btnKetBan">Kết bạn</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col friend-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="images/avatar-men.png" alt="avatar">
-                                </div>
-                                <div class="col-9">
-                                    <h5 id="h5-namefriend">Friend's Name</h5>
-                                    <span class="form-text text-muted">Giới tính: Nam</span>
-                                    <div class="row">
-                                        <button class="btn btn-primary">Giới thiệu</button>
-                                        <button class="btn btn-success">Kết bạn</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col friend-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="images/avatar-men.png" alt="avatar">
-                                </div>
-                                <div class="col-9">
-                                    <h5 id="h5-namefriend">Friend's Name</h5>
-                                    <span class="form-text text-muted">Giới tính: Nam</span>
-                                    <div class="row">
-                                        <button class="btn btn-primary">Giới thiệu</button>
-                                        <button class="btn btn-success">Kết bạn</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col friend-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="images/avatar-men.png" alt="avatar">
-                                </div>
-                                <div class="col-9">
-                                    <h5 id="h5-namefriend">Friend's Name</h5>
-                                    <span class="form-text text-muted">Giới tính: Nam</span>
-                                    <div class="row">
-                                        <button class="btn btn-primary">Giới thiệu</button>
-                                        <button class="btn btn-success">Kết bạn</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col friend-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="images/avatar-men.png" alt="avatar">
-                                </div>
-                                <div class="col-9">
-                                    <h5 id="h5-namefriend">Friend's Name</h5>
-                                    <span class="form-text text-muted">Giới tính: Nam</span>
-                                    <div class="row">
-                                        <button class="btn btn-primary">Giới thiệu</button>
-                                        <button class="btn btn-success">Kết bạn</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col friend-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="images/avatar-men.png" alt="avatar">
-                                </div>
-                                <div class="col-9">
-                                    <h5 id="h5-namefriend">Friend's Name</h5>
-                                    <span class="form-text text-muted">Giới tính: Nam</span>
-                                    <div class="row">
-                                        <button class="btn btn-primary">Giới thiệu</button>
-                                        <button class="btn btn-success">Kết bạn</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -181,6 +85,18 @@
     <script src="js/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/index.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInputName").keyup(function(){
+                var keyword = $('#myInputName').val();
+                var sessionname = <?php echo json_encode($username)?>;
+                $.post("A_searchfriend.php", {tukhoa: keyword, sessionname : sessionname}, function(data){
+                    // $('#datasearch').empty();
+                    $('.div-bandenghi').html(data);
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>

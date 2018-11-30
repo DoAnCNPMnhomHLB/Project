@@ -107,6 +107,12 @@ class truyvan extends database{
 		return $this->loadAllRows();
 	}
 
+	function searchFriendInDB($key, $sessionname) {
+		$sql = "SELECT * FROM `user` WHERE username <> '$sessionname' AND username LIKE '%$key%'";
+		$this->setQuery($sql);
+		return $this->loadAllRows();
+	}
+
 	function changePass($username, $newpass) {
 		$sql = "UPDATE `user` SET `password` = '$newpass' WHERE `username` = '$username'";
 		$this->setQuery($sql);

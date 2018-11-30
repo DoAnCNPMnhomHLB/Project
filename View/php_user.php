@@ -44,6 +44,7 @@
         $username = $_SESSION['username'];
         $pass = $_POST['currentpassword'];
         $npass = $_POST['newpassword'];
-        $thePassword->checkPass($username, md5($pass), md5($npass));
+        $cpass = $_POST['comfirmpassword'];
+        $thePassword->checkPass($username, $pass, $npass, $cpass);
     }
     ?>
