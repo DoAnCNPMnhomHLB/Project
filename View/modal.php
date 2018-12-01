@@ -108,7 +108,7 @@
                                 <label for="email">Email: </label>
                             </div>
                             <div class="col-8">
-                                <input type="text" name="email" id="email" value="<?php echo $hung_email; ?>">
+                                <input type="email" name="email" id="email" value="<?php echo $hung_email; ?>">
                             </div>
                         </div>
                         <div class="row">

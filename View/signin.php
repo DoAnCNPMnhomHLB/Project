@@ -73,7 +73,7 @@ if(isset($_POST['btn_login']))
                         <div class="div-form">                    
                                 <input type="text" placeholder="Họ và tên" id="ho" name="username_signin">
                                 <br>
-                                <input type="text" placeholder="example@email.com*" id="email" name="email">
+                                <input type="email" placeholder="example@email.com*" id="email" name="email">
                                 <br>
                                 <input type="password" placeholder="Password*" id="pass" name="password_signin">
                                 <br>
