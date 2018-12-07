@@ -271,7 +271,7 @@
                                             //di chuyển file vào folder images/
                                             //thực hiện việc lưu trữ dữ liệu vào db
                                             $file_part_sql = 'images/'.$file_part;
-                                            $sql = "INSERT INTO library(documentId,kind_of_document,documentName,file, author) VALUES (null,'$post_document','$nameDoc','$file_part_sql','$author')";
+                                            $sql = "INSERT INTO library(kind_of_document,documentName,file, author) SELECT '$post_document','$nameDoc','$file_part_sql', user.id FROM `user` WHERE user.username = '$author' ";
                                                 // thực thi câu $sql với biến conn lấy từ file connection.php
                                                 mysqli_query($conn,$sql);
                                                 
